@@ -1,9 +1,10 @@
 # ict-project2
 
-composer update
-composer install
-npm install 
-npm update
-npm run --dev
+composer update //
+composer install //
+npm install //
+npm update //
+npm run --dev //
+php artisan key:generate //
 
-iets met env.example?
+env.example kopieren?
