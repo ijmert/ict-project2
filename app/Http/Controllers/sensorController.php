@@ -16,4 +16,9 @@ class sensorController {
        // $this->siteConfig();
        return view('layouts/editSensorView');
     }
+    public function editSensor(){
+         if (isset($_POST['AnnuleerBtn'])){
+             return view('layouts/editSensorView');
+         }
+    }
 }

@@ -4,7 +4,7 @@
 
 <label>Sensor aanpassen</label>
 
-<form action="" method="post">
+<form action="editSensor" method="post">
     <table>
         <tr>
             <td>Topic</td>
