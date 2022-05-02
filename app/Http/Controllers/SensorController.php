@@ -18,6 +18,7 @@ class SensorController extends Controller
          
          
         return view("layouts/editSensorView", ['sensorData'=>$sensorData]);
+
     }
     public function editSensor(){
          if (isset($_POST['AnnuleerBtn'])){
