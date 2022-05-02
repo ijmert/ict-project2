@@ -1,5 +1,5 @@
-/Algemeen/
-{
+/*Algemeen*/
+*{
     margin: 0;
     padding: 0;
 }
@@ -60,7 +60,7 @@ label{
 }
 
 
-/Sensor toevoegen/aanpassen css/
+/*Sensor toevoegen/aanpassen css*/
 .SensorFrom{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: right;
@@ -77,10 +77,11 @@ select{
 }
 
 
-/Aanmelden/registratie fromulier css*/
+/*Aanmelden/registratie fromulier css*/
 .Aanmeld-RegistratieForm{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding-right: -10px;
     text-align: right;
     display: inline-block;
 }
+
