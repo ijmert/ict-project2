@@ -26,7 +26,6 @@ Route::get('/editSensor', [App\Http\Controllers\sensorController::class, 'showEd
 Route::post('/editSensor', [App\Http\Controllers\sensorController::class, 'editSensor'])->name('test');
 
 
-Route::get('/test', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('test');
 
 
 
