@@ -23,7 +23,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/editSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('editSensor');
-Route::post('/editSensor', [App\Http\Controllers\sensorController::class, 'editSensor'])->name('test');
+Route::post('/editSensor', [App\Http\Controllers\sensorController::class, 'editSensor'])->name('editSensor');
+
+Route::get('/test', [App\Http\Controllers\sensorController::class, 'mainSiteConfig'])->name('test');
+Route::post('/test', [App\Http\Controllers\sensorController::class, 'mainSiteConfigButtons'])->name('test');
 
 
 

@@ -6,8 +6,17 @@ use Illuminate\Http\Request;
 
 class SensorController extends Controller
 {
-     public function showEditSensor(){
-       // $this->siteConfig();
+    public function mainSiteConfig(){
+        $data[] = "maarten";
+        $data[] = "maarten";
+         return view("layouts/mainTableView" , ['data'=>$data]);
+    }
+    public function mainSiteConfigButtons(){
+        if (isset($_POST['btnAanpassen'])){
+             return view('layouts/main');
+        }
+    }
+    public function showEditSensor(){
             //haal content uit database
          $sensorData['id']= 124;
          $sensorData['Topic'] = "topic";
@@ -36,4 +45,5 @@ class SensorController extends Controller
             return view('layouts/main');
          }
     }
+    
 }
