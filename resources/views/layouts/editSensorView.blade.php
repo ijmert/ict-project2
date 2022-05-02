@@ -1,10 +1,14 @@
+@extends('layouts.main')
+
+@section('content')
+
 <label>Sensor aanpassen</label>
 
 <form action="" method="post">
     <table>
         <tr>
             <td>Topic</td>
-            <td><input type="text" name="sensorTopic" value="<?php echo $sensorData['topic'] ?>" ></td>
+            <td><input type="text" name="sensorTopic" value="" ></td>
         </tr>
         <tr>
             <td>Naam</td>
@@ -34,3 +38,4 @@
     <button name="submitBtn" type="submit" class="btn btn-primary" value="">Toevoegen</button>
 </form>
 
+@endsection
