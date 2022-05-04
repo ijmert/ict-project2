@@ -31,7 +31,7 @@ h1 {
     margin-top: -60px;
 }
 
-button.btn-primary{
+button{
     border-radius: 15px;
     border: 1px solid gray;
     padding: 5px;
@@ -86,6 +86,11 @@ select{
     display: inline-block;
 }
 
+
+table.responsiveTable{
+    margin: 60px;
+   width: 100%; 
+}
 
 @charset "UTF-8";
 /*!

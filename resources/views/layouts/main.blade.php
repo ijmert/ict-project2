@@ -17,7 +17,7 @@
                                         @csrf
                                     </form>
         </nav>
-        <main >
+        <main style="width: 100%">
             @yield('content')
         </main>
     </body>

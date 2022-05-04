@@ -2,10 +2,13 @@
 
 @section('content')
 
-<br>
-<table>
+<table class="responsiveTable">
     <tr>
-        <td colspan="4"><button>sensor toevoegen</button></td>
+        
+    <form action="addSensor" method="post" >
+             @csrf
+             <td colspan="4"> <button>sensor toevoegen</button> </td>
+    </form>
     </tr>
      <?php
     for ($RowCounter = 1;$RowCounter <= 3 ;$RowCounter++){?>
@@ -15,16 +18,17 @@
         <td>
             <table>
                 <tr>
-                    <td>sensornaam</td>
+                    <td style="width: 75%">sensornaam</td>
+                    <td style="width: 25%"><form action="deleteSensor"><button value="24">x</button></form></td>
                 </tr>
                 <tr>
                     <td>afbeelding</td>
                 </tr>
                 <tr>
                     <td> 
-                        <form action="test" method="post">
+                        <form action="showEditSensor" method="post">
                             @csrf
-                            <button name="btnAanpassen" type="submit" value="sensorId"> aanpassen </button> 
+                            <button name="EditSensorButton" type="submit" value="24"> aanpassen </button> 
                         </form>
                     </td>
                 </tr>

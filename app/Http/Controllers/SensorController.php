@@ -9,15 +9,12 @@ class SensorController extends Controller
     public function mainSiteConfig(){
         $data[] = "maarten";
         $data[] = "maarten";
-         return view("layouts/mainTableView" , ['data'=>$data]);
+        return view("layouts/mainTableView" , ['data'=>$data]);
     }
     public function mainSiteConfigButtons(){
         if (isset($_POST['btnAanpassen'])){
-             return view('layouts/main');
-        }
-    }
-    public function showEditSensor(){
-            //haal content uit database
+            //content ophalen
+            
          $sensorData['id']= 124;
          $sensorData['Topic'] = "topic";
          $sensorData['Naam'] = "sensor1";
@@ -27,13 +24,32 @@ class SensorController extends Controller
          
          
         return view("layouts/editSensorView", ['sensorData'=>$sensorData]);
+        }
+    }
+    public function showEditSensor(){
+        if (isset($_POST['EditSensorButton'])) {
+         
+         $sensorData['Id']= $_POST['EditSensorButton'];
+            //data opzoeken van deze ID
+         
+         $sensorData['Topic'] = $_POST['EditSensorButton'];
+         $sensorData['Naam'] = "sensor1";
+         $sensorData['Maximum'] = "50";
+         $sensorData['Minimum'] = "0";
+         $sensorData['Eenheid'] = "meter";
+         
+         
+        return view("layouts/editSensorView", ['sensorData'=>$sensorData]);   
+        }
 
     }
     public function editSensor(){
          if (isset($_POST['AnnuleerBtn'])){
-             return view('layouts/main');
+             $data[]="";
+             return view("layouts/mainTableView" , ['data'=>$data]);
          } else {
-            $sensorData['id']= $_POST['submitBtn'];
+            $sensorData['Id']= $_POST['EditButon'];
+            
             $sensorData['Topic'] = $_POST['sensorTopic'];
             $sensorData['Naam'] = $_POST['sensorTopic'];
             $sensorData['Maximum'] = $_POST['sensorTopic'];
@@ -42,8 +58,13 @@ class SensorController extends Controller
             
             //invoegen in database
             
-            return view('layouts/main');
+            
+             $data[]="";
+             return view("layouts/mainTableView" , ['data'=>$data]);
          }
+    }
+    public function deleteSensor() {
+        
     }
     
 }
