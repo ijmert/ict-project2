@@ -2,9 +2,10 @@
 
 @section('content')
 
-<label>Sensor aanpassen</label>
-
-<form action="editSensor" method="post">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<label class="labelTest">Sensor aanpassen</label>
+<div class="containerTable">
+<form action="editSensor" method="post" class="SensorFrom">
     @csrf
 
     <table>
@@ -39,5 +40,5 @@
     <button name="AnnuleerBtn" type="submit" value="">annuleren</button>
     <button name="EditButon" type="submit"  value="{{$sensorData['Id'] }}">Pas aan</button>
 </form>
-
+</div>
 @endsection

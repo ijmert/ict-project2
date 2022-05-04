@@ -18,8 +18,15 @@
         <td>
             <table>
                 <tr>
-                    <td style="width: 75%">sensornaam</td>
-                    <td style="width: 25%"><form action="deleteSensor"><button value="24">x</button></form></td>
+                    <td style="width: 75%">
+                        <?php data[$counter]['naam'] ?>
+                        </td>
+                    <td style="width: 25%">
+                        <form action="deleteSensor" method="post">
+                            @csrf
+                            <button name="deleteSensorButton" type="submit" value="24">x</button>
+                        </form>
+                    </td>
                 </tr>
                 <tr>
                     <td>afbeelding</td>

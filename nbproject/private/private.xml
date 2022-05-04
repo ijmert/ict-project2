@@ -3,27 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/app/Http/Controllers/Controller.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/.gitignore</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/database/migrations/2014_10_12_000000_create_users_table.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/config/filesystems.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/routes/api.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/app/Http/Controllers/HomeController.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/database/migrations/2022_05_02_103232_create_sensors_table.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/routes/channels.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/routes/web.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/resources/views/home.blade.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/.env</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/resources/views/auth/register.blade.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/app/Http/Middleware/Authenticate.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/resources/views/welcome.blade.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/app/Http/Controllers/Auth/RegisterController.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/app/Http/Middleware/RedirectIfAuthenticated.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/config/database.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/routes/console.php</file>
-            <file>file:/C:/Users/ijmer/repos/ict-project2/database/seeders/DatabaseSeeder.php</file>
+            <file>file:/C:/Users/Maarten%20Vanhengel/Documents/git/1/ict-project2/app/Http/Controllers/sensorController.php</file>
+            <file>file:/C:/Users/Maarten%20Vanhengel/Documents/git/1/ict-project2/app/Models/SensorModel.php</file>
+            <file>file:/C:/Users/Maarten%20Vanhengel/Documents/git/1/ict-project2/resources/views/layouts/mainTableView.blade.php</file>
+            <file>file:/C:/Users/Maarten%20Vanhengel/Documents/git/1/ict-project2/routes/web.php</file>
         </group>
     </open-files>
 </project-private>

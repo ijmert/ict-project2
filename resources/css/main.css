@@ -82,11 +82,16 @@ select{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding-right: -10px;
     text-align: right;
-    display: inline-block;
 }
 
 
 table.responsiveTable{
     margin: 60px;
    width: 100%; 
+}
+
+.containerTable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

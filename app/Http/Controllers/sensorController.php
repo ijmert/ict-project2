@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\SensorModel;
+
 class SensorController extends Controller
 {
+    private SensorModel $sensorData ;
+
     public function mainSiteConfig(){
-        $data[] = "maarten";
+        $data[] = "maarten";    //$data[] = sensormodel->getSensorsFromAcount($user_id);
         $data[] = "maarten";
         return view("layouts/mainTableView" , ['data'=>$data]);
     }
@@ -64,7 +68,13 @@ class SensorController extends Controller
          }
     }
     public function deleteSensor() {
-        
+        if (isset($_POST['deleteSensorButton'])){
+            $id = $_POST['deleteSensorButton'];
+          //  $this->sensorData->removeSensor($id);
+            
+            $data[]="";
+             return view("layouts/mainTableView" , ['data'=>$data]);
+         } 
     }
     
 }
