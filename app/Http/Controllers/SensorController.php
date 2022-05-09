@@ -11,8 +11,13 @@ class SensorController extends Controller
     private SensorModel $sensorData ;
 
     public function mainSiteConfig(){
-        $data[] = "maarten";    //$data[] = sensormodel->getSensorsFromAcount($user_id);
-        $data[] = "maarten";
+        $sensor['id']= 127;
+        $sensor['naam']= "maarten";
+        
+        $data[1] = $sensor;
+        $data[0] = $sensor;
+        //$data[] = "maarten";    //$data[] = sensormodel->getSensorsFromAcount($user_id);
+        //$data[] = "maarten";
         return view("layouts/mainTableView" , ['data'=>$data]);
     }
     public function mainSiteConfigButtons(){

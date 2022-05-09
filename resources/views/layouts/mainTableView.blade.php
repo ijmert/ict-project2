@@ -11,6 +11,7 @@
     </form>
     </tr>
      <?php
+     $counter = 0;
     for ($RowCounter = 1;$RowCounter <= 3 ;$RowCounter++){?>
     <tr>
         <?php
@@ -19,7 +20,9 @@
             <table>
                 <tr>
                     <td style="width: 75%">
-                        <?php data[$counter]['naam'] ?>
+                        <?php $sensor[] = $data[0] ?>
+                        <?php echo $sensor['id']?>
+                        <?php $counter++ ?>
                         </td>
                     <td style="width: 25%">
                         <form action="deleteSensor" method="post">
