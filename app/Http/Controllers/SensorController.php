@@ -34,6 +34,7 @@ class SensorController extends Controller
          
         return view("layouts/editSensorView", ['sensorData'=>$sensorData]);
         }
+        
     }
     public function showEditSensor(){
         if (isset($_POST['EditSensorButton'])) {
@@ -52,6 +53,15 @@ class SensorController extends Controller
         }
 
     }
+    
+    public function showAddSensor(){
+        if (isset($_POST['AddSensorButton'])) {
+         
+        return view("layouts/addSensorView");   
+        }
+
+    }
+    
     public function editSensor(){
          if (isset($_POST['AnnuleerBtn'])){
              $data[]="";
@@ -71,6 +81,13 @@ class SensorController extends Controller
              $data[]="";
              return view("layouts/mainTableView" , ['data'=>$data]);
          }
+    }
+    
+    public function addSensor(){
+        if (isset($_POST['AnnuleerButton'])){
+             $data[]="";
+             return view("layouts/mainTableView" , ['data'=>$data]);
+         }       
     }
     public function deleteSensor() {
         if (isset($_POST['deleteSensorButton'])){

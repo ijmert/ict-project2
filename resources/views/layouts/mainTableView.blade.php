@@ -7,9 +7,9 @@
 <table class="responsiveTable">
     <tr>
         
-    <form action="addSensor" method="post" >
+    <form action="showAddSensor" method="post" >
              @csrf
-             <td colspan="4"> <button>sensor toevoegen</button> </td>
+             <td colspan="4"> <button name="AddSensorButton" type="submit" value="24">Sensor Toevoegen</button> </td>
     </form>
     </tr>
      <?php
@@ -40,7 +40,7 @@
                     <td> 
                         <form action="showEditSensor" method="post">
                             @csrf
-                            <button name="EditSensorButton" type="submit" value="24"> aanpassen </button> 
+                            <button name="EditSensorButton" type="submit" value="24"> Aanpassen </button> 
                         </form>
                     </td>
                 </tr>
