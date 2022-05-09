@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
 <table class="responsiveTable">
     <tr>
         
@@ -21,7 +23,7 @@
                 <tr>
                     <td style="width: 75%">
                         <?php $sensor[] = $data[0] ?>
-                        <?php echo $sensor['id']?>
+                       
                         <?php $counter++ ?>
                         </td>
                     <td style="width: 25%">
