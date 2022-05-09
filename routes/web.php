@@ -26,8 +26,8 @@ Route::get('/editSensor', [App\Http\Controllers\sensorController::class, 'showEd
 Route::post('/editSensor', [App\Http\Controllers\sensorController::class, 'editSensor'])->name('editSensor');
 
 Route::post('/showAddSensor', [App\Http\Controllers\sensorController::class, 'showAddSensor'])->name('addSensor');
-Route::get('/addSensor', [App\Http\Controllers\sensorController::class, 'showAddSensor'])->name('addSensor');
-Route::post('/addSensor', [App\Http\Controllers\sensorController::class, 'addSensor'])->name('addSensor');
+Route::get('addSensor','App\Http\Controllers\sensorController@insertForm');
+Route::post('add','App\Http\Controllers\sensorController@addSensor');
 
 Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfig'])->name('test');
 //Route::post('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfigButtons'])->name('test');
