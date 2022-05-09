@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('unit');
             $table->double('min');
             $table->double('max');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('users_id')->constrained();
         });
     }
 
