@@ -19,14 +19,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+Route::post('/showEditSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('editSensor');
 Route::get('/editSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('editSensor');
 Route::post('/editSensor', [App\Http\Controllers\sensorController::class, 'editSensor'])->name('editSensor');
 
-Route::get('/test', [App\Http\Controllers\sensorController::class, 'mainSiteConfig'])->name('test');
-Route::post('/test', [App\Http\Controllers\sensorController::class, 'mainSiteConfigButtons'])->name('test');
+Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfig'])->name('test');
+//Route::post('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfigButtons'])->name('test');
+
+Route::post('/addSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('addSensor');
+Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
+Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
 
 
 
