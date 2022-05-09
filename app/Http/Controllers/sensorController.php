@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 use App\Models\SensorModel;
 
@@ -34,6 +37,7 @@ class SensorController extends Controller
          
         return view("layouts/editSensorView", ['sensorData'=>$sensorData]);
         }
+        
     }
     public function showEditSensor(){
         if (isset($_POST['EditSensorButton'])) {
@@ -52,6 +56,7 @@ class SensorController extends Controller
         }
 
     }
+    
     public function editSensor(){
          if (isset($_POST['AnnuleerBtn'])){
              $data[]="";
@@ -72,6 +77,33 @@ class SensorController extends Controller
              return view("layouts/mainTableView" , ['data'=>$data]);
          }
     }
+    
+    public function showAddSensor(){
+        if (isset($_POST['AddSensorButton'])) {
+
+        return view("layouts/addSensorView");   
+        }
+        
+    }
+    public function insertform(){
+        return view("layouts/mainTableView" , ['data'=>$data]);
+    }
+        
+    public function addSensor(Request $request){
+        if (isset($_POST['AnnuleerButton'])){
+            return view("layouts/mainTableView" , ['data'=>$data]);
+        }
+        
+        $topic = $request->input('topic');
+        $type = $request->input('type');
+        $unit = $request->input('unit');
+        $min = $request->input('min');
+        $max = $request->input('max');
+        $users_id = auth()->user()->id;
+        $data=array("topic"=>$topic,"type"=>$type,"unit"=>$unit,"min"=>$min,"max"=>$max, "users_id"=>$users_id);
+        DB::table('sensors')->insert($data);              
+    }          
+    
     public function deleteSensor() {
         if (isset($_POST['deleteSensorButton'])){
             $id = $_POST['deleteSensorButton'];

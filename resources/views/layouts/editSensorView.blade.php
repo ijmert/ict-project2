@@ -32,12 +32,12 @@
         <tr>
             <td>Type meter</td>
             <td> <select name="sensorTypeMeter">
-                <option>temperatuur</option>
-                <option>vochtigheid</option>
+                <option>Temperatuur</option>
+                <option>Vochtigheid</option>
             </select> </td>
         </tr>
     </table>
-    <button name="AnnuleerBtn" type="submit" value="">annuleren</button>
+    <button name="AnnuleerBtn" type="submit" value="">Annuleren</button>
     <button name="EditButon" type="submit"  value="{{$sensorData['Id'] }}">Pas aan</button>
 </form>
 </div>
