@@ -1,7 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
-
+<pre>
+    <?php echo $data[0]['id'] ?>
+    <?php echo $data[0]['topic'] ?>
+    <?php echo $data[0]['type'] ?>
+    <?php echo $data[0]['unit'] ?>
+    <?php echo $data[0]['min'] ?>
+    <?php echo $data[0]['max'] ?>
+</pre>
 
 
 <table class="responsiveTable">
@@ -22,7 +29,7 @@
             <table>
                 <tr>
                     <td style="width: 75%">
-                        <?php $sensor[] = $data[0] ?>
+                    
                        
                         <?php $counter++ ?>
                         </td>
@@ -38,9 +45,9 @@
                 </tr>
                 <tr>
                     <td> 
-                        <form action="showEditSensor" method="post">
+                        <form action="showEditSensor" method="POST">
                             @csrf
-                            <button name="EditSensorButton" type="submit" value="24"> aanpassen </button> 
+                            <button name="EditSensorButton" type="submit" value="<?php echo $data[0]['id'] ?>"> aanpassen </button> 
                         </form>
                     </td>
                 </tr>

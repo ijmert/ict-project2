@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SensorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +22,11 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/showEditSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('editSensor');
+
+
 Route::get('/editSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('editSensor');
-Route::post('/editSensor', [App\Http\Controllers\sensorController::class, 'editSensor'])->name('editSensor');
+Route::get('editSensor','App\Http\Controllers\sensorController@insertform');
+Route::post('editSensor','App\Http\Controllers\sensorController@editSensor');
 
 Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfig'])->name('test');
 //Route::post('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfigButtons'])->name('test');
