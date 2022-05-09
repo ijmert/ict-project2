@@ -28,6 +28,7 @@ h1 {
     align-items: flex-start;
     vertical-align: middle;
     margin-top: -60px;
+    margin-right: 75px;
 }
 
 button{
@@ -87,11 +88,15 @@ select{
 
 table.responsiveTable{
     margin: 60px;
-   width: 100%; 
+    width: 90%;
 }
 
 .containerTable{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dropdown-menu{
+   position: fixed;
 }
