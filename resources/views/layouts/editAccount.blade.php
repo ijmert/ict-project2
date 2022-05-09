@@ -17,7 +17,7 @@
     for ($RowCounter = 1;$RowCounter <= 3 ;$RowCounter++){?>
     <tr>
         <?php
-            for ($RowGridCounter = 1;$RowGridCounter <=4;$RowGridCounter++){?>
+            for ($ColCounter = 1;$ColCounter <=4;$ColCounter++){?>
         <td>
             <table>
                 <tr>

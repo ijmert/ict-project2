@@ -33,6 +33,7 @@
             <td> <select name="type">
                 <option>Temperatuur</option>
                 <option>Vochtigheid</option>
+                <option>CO2</option>
             </select> </td>
         </tr>
     </table>

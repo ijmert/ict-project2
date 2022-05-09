@@ -32,8 +32,7 @@ Route::post('/showAddSensor', [App\Http\Controllers\sensorController::class, 'sh
 Route::get('addSensor','App\Http\Controllers\sensorController@insertForm');
 Route::post('add','App\Http\Controllers\sensorController@addSensor');
 
-Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfig'])->name('test');
-//Route::post('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfigButtons'])->name('test');
+Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfig']);
 
 Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
 Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
