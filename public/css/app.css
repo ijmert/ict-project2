@@ -29,7 +29,6 @@ h1 {
     align-items: flex-start;
     vertical-align: middle;
     margin-top: -60px;
-    margin-right: 75px;
 }
 
 button{
@@ -98,8 +97,11 @@ table.responsiveTable{
     align-items: center;
 }
 
-.dropdown-menu{
-   position: fixed;
+#dropdownMenuButton1{
+    border: 0px solid red;
+    margin-top: 15px;
+    padding: 6px;
+    box-shadow: none;
 }
 
 @charset "UTF-8";
