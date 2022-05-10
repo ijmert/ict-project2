@@ -12,8 +12,10 @@ use PDO;
 use PDOException;
 
 
-class SensorModel{
-    
+class SensorModel extends \Eloquent{
+    public function __construct() {
+        ;
+    }
     public function getSensorData($id){
         try{
             $db = $this->db->pdo;
