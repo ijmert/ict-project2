@@ -13,28 +13,27 @@ Use App\Models\Sensor_last_measurement;
 class SensorController extends Controller
 {
     public function siteConfig() {  
-        //$id = auth()->user()->id;
-        $id = 1;
-        $data['sensorData'] = sensor::where('users_id', 1)->get();
-        for($i=0; $i<count($data['sensorData']);$i++){
-          $data['value'][$i] = $this->getLastValue($data['sensorData'][$i]['topic']);  
-           $data['value'][$i] = 10;
-        }
-      //  $data['value'] = 10;
+        $id = auth()->user()->id;
+        //$id = 2;
+        $SensorData = sensor::where('users_id', $id)->get();
+        $data['sensorData'] = $SensorData;
+        for($i=0; $i<count($SensorData);$i++){
+          //$data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);  
+           $data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
+        }  
+       // $data['value'] = 10;
         $name = User::where('id', 2)->get();
         $preName = explode(' ', $name[0]['name'])[0];
         $postName = explode(' ', $name[0]['name'])[1];
         $data['initials'] = substr($preName, 0, 1);
         $data['initials'] .= substr($postName, 0, 1);
+     /*   $data['sensor'] = $SensorData;*/
         return $data;
     }
     public function mainSiteConfig(){
         $data = $this->siteConfig();
-        $id = auth()->user()->id;
+       $id = auth()->user()->id;
         return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
-        
-      /*  $data = sensor::where('users_id', 2)->get();
-        return view("layouts/test", ['test'=>$data]); */
     }
     public function showEditSensor(Request $request){
         if (isset($_POST['EditSensorButton'])) {
@@ -68,8 +67,9 @@ class SensorController extends Controller
                         ->where('id', $id)
                         ->update(['topic' => $topic, 'type' => $type, 'unit' => $unit, 'min'=>$min, 'max'=>$max, ]);
             
-             $data = $this->siteCOnfig();
-            return view("layouts/mainTableView" , ['data'=>$data['sensorData']], ['initials'=>$data['initials']]);
+            $SensorData = $this->siteConfig();
+        $id = auth()->user()->id;
+        return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
          }
     }
     public function showAddSensor(){
@@ -78,14 +78,16 @@ class SensorController extends Controller
         
     }
     public function insertform(){
-        $data = $this->siteCOnfig();
-        return view("layouts/mainTableView" , ['data'=>$data['sensorData']], ['initials'=>$data['initials']]);
+        $SensorData = $this->siteConfig();
+        $id = auth()->user()->id;
+        return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
     }
         
     public function addSensor(Request $request){
         if (isset($_POST['AnnuleerButton'])){
-            $data = $this->siteCOnfig();
-        return view("layouts/mainTableView" , ['data'=>$data['sensorData']], ['initials'=>$data['initials']]);
+        $data = $this->siteConfig();
+       $id = auth()->user()->id;
+        return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
         }
         
         $topic = $request->input('topic');
@@ -93,11 +95,13 @@ class SensorController extends Controller
         $unit = $request->input('unit');
         $min = $request->input('min');
         $max = $request->input('max');
-        $data=array("topic"=>$topic,"type"=>$type,"unit"=>$unit,"min"=>$min,"max"=>$max, "users_id"=>1);
+        $user_id = auth()->user()->id;
+        $data=array("topic"=>$topic,"type"=>$type,"unit"=>$unit,"min"=>$min,"max"=>$max, "users_id"=>$user_id);
         DB::table('sensors')->insert($data);  
         
-        $data = $this->siteCOnfig();
-            return view("layouts/mainTableView" , ['data'=>$data['sensorData']], ['initials'=>$data['initials']]);
+        $SensorData = $this->siteConfig();
+        $id = auth()->user()->id;
+        return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
     }          
     
     public function deleteSensor(Request $request) {
@@ -107,9 +111,16 @@ class SensorController extends Controller
     
     public function getLastValue($topic){
         
-        $var = Sensor_last_measurement::where('topic', $topic)->get();
-        
+      /*  $var = Sensor_last_measurement::where('topic', $topic)->get();
+        if (isset($var)) {
         return $var[0]['LastMeasurement'];
+        }
+        else{
+            return 0;
+        }
+    } */
+        
+        return 10;
     }
     
 }

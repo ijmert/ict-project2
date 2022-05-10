@@ -8,26 +8,27 @@
 <br>
 </pre>
 
-
-<table class="responsiveTable">
-    <tr>
-        
+<!-- <table class="responsiveTable"> -->
+  <!--  <tr> -->
+<div class="container">
+    <div class="row">
     <form action="showAddSensor" method="post" >
              @csrf
              <td colspan="4"> <button name="AddSensorButton" type="submit" >Sensor Toevoegen</button> </td>
     </form>
-    </tr>
+    </div>
+  <!--  </tr> -->
      <?php
     for ($RowCounter = 1;$RowCounter <= $rows ;$RowCounter++){?>
-    <tr>
+    <!-- <tr> -->
+  <div class="row">
         <?php
-            for ($ColCounter = 1;$ColCounter <=4 && $counter < count($data);$ColCounter++){?>
-        <td>
+            for ($ColCounter = 1;$ColCounter <=4 && $counter < count($data['sensorData']);$ColCounter++){?>
+        <!-- <td> -->
+      <div class="col-md">
             <table>
                 <tr>
                     <td style="width: 75%">
-                        <?php $sensor[] = $data['sensorData'][0] ?>
-                       
                         <?php echo $data['sensorData'][$counter]['topic']; ?>
                         
                     </td>
@@ -38,8 +39,38 @@
                         </form>
                     </td>
                 </tr>
-                <tr>
-                    <td><?php echo $data['value'][$counter] ?> </td>
+                <tr style="height: 300px">
+                    <td style="width: 150px">                        
+                        <?php if($data['sensorData'][$counter]['type'] == "digitaal"){ ?>
+                            <div class="container">
+                                    <div class="de">
+                                        <div class="den">
+                                          <div class="dene">
+                                            <div class="denem">
+                                              <div class="deneme">
+                                                <?php echo $data['value'][$counter] ?><strong> <?php echo $data['sensorData'][$counter]['unit'] ?></strong>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                        <?php  } ?>
+                        <?php if($data['sensorData'][$counter]['type'] == "chart"){ ?>
+                            <table class="graph">
+                                <thead>
+                                        <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col"></th>
+                                        </tr>
+                                </thead><tbody>
+                                        <tr style="height:<?php echo $data['value'][$counter] ?>%">
+                                                <td><span><?php echo $data['value'][$counter] ?>%</span></td>
+                                        </tr>
+                                </tbody>
+                                </table>
+                        <?php  } ?>
+                         </td>
                 </tr>
                 <tr>
                     <td> 
@@ -52,11 +83,13 @@
                 
                         <?php $counter++ ?>
             </table>
-        </td>
+       <!-- </td> -->
+      </div>
         <?php } ?>
-                </tr>  
+               <!-- </tr>   -->
+  </div>
        <?php } ?>
     
-</table>
-
+<!-- </table> -->
+</div>
 @endsection

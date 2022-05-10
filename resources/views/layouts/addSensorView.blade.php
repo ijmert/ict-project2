@@ -31,9 +31,8 @@
         <tr>
             <td>Type meter</td>
             <td> <select name="type">
-                <option>Temperatuur</option>
-                <option>Vochtigheid</option>
-                <option>CO2</option>
+                <option>digitaal</option>
+                <option>chart</option>
             </select> </td>
         </tr>
     </table>
