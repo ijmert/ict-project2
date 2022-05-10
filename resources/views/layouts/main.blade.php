@@ -83,12 +83,12 @@ body { background: #f2f2f2; }
     color: #555;
     text-shadow: 1px 1px 1px white;
     font-family: 'Dosis';
-    font-size: 100px;
+    font-size: 8px;
     font-weight: 400;
     text-align: center;
 }
 .deneme span { font-size: 30px; font-weight: 200; }
-.deneme strong { position: absolute; right: 10px; top: 25px; font-size: 34px; }
+.deneme strong { position: absolute; right: 10px;  font-size: 20px; }
 
 
 
@@ -210,8 +210,6 @@ body { background: #f2f2f2; }
 			padding:0.5em 0;
 			margin:-1em 0 0;
 			font:normal 85%/120% arial,helvetica,sans-serif;
-/* 			background:white; */
-/* 			box-shadow:0 0 0.25em rgba(0,0,0,0.6); */
 			font-weight:bold;
 			opacity:0;
 			transition:opacity 0.5s;
@@ -221,18 +219,207 @@ body { background: #f2f2f2; }
 		.toggleGraph:checked + table td span,
 		.graph tr:hover td span {
 			width:4em;
-			margin-left:-2em; /* 1/2 the declared width */
+			margin-left:-2em; 
 			opacity:1;
 		}
-
-
-
-    
-
-
-	} /* min-width:32em */
-
+	} 
 } 
+        /*circle cart */
+        .flex-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.single-chart {
+  justify-content: space-around ;
+}
+
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 100%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+  stroke: red;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+
+.percentage {
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.3em;
+  text-anchor: middle;
+}
+/*termometer*/
+progress{
+		transform: rotate(-90deg);
+		display: block;
+		width: 100%;
+        height: 25px
+	}
+	.dott {
+  		height: 25px;
+		width: 25px;
+		background-color: #bbb;
+		border-radius: 50%;
+		display: inline-block;
+		margin-top: 68px;
+		margin-left: 67px;
+	}
+	/*thermometer */
+    .thermometerBody {
+	color: white;
+	font: 1em/1.5 system-ui, -apple-system, sans-serif;
+}
+.thermometer, .thermometer__tube {
+	position: relative;
+}
+.thermometer {
+	background-image: linear-gradient(-135deg,hsl(223,10%,85%),hsl(223,10%,65%));
+	border-radius: 2em;
+	box-shadow:
+		0.2em 0 0.1em hsl(223,10%,45%) inset,
+		0 -0.2em 0.1em hsl(223,10%,45%) inset,
+		-0.1em 0 0 hsl(223,10%,80%) inset,
+		0 0.1em 0 hsl(223,10%,80%) inset;
+	margin: auto;
+	width: 10em;
+	height: 300px;
+}
+.thermometer:before, .thermometer__inner, .thermometer__ring, .thermometer__tube:before {
+	position: absolute;
+}
+.thermometer:before, .thermometer__inner {
+	left: 1em;
+}
+.thermometer:before, .thermometer__tube:before {
+	content: "";
+	display: block;
+}
+.thermometer:before {
+	background-image: linear-gradient(hsl(223,10%,90%),hsl(223,10%,80%));
+	border-radius: 1.2em;
+	box-shadow:
+		-0.1em 0.1em 0.1em hsl(223,10%,55%) inset,
+		0.2em -0.2em 0.4em hsl(223,10%,100%) inset,
+		-0.3em 0.2em 0.4em hsl(223,10%,55%) inset,
+		0.1em -0.1em 0.1em hsl(223,10%,70%),
+		0.5em -0.5em 0.3em hsl(223,10%,65%),
+		0 0 0.4em 0.4em hsl(223,10%,100%);
+	top: 1em;
+	width: calc(100% - 2em);
+	height: calc(100% - 2em);
+}
+.thermometer__inner {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: flex-start;
+	top: 0.9em;
+	text-align: center;
+	width: calc(100% - 2em);
+	height: calc(100% - 4em);
+}
+.thermometer__c, .thermometer__f {
+	background-image:
+		linear-gradient(hsl(0,0%,0%) 0.1em,hsla(0,0%,0%,0) 0.1em),
+		linear-gradient(hsl(0,0%,0%) 0.1em,hsla(0,0%,0%,0) 0.1em);
+	background-repeat: repeat-y;
+	flex-basis: calc(50% - 0.75em);
+	margin-bottom: 0.125em;
+}
+.thermometer__c {
+	background-position: 100% 0;
+	background-size: 0.8em 1em, 0.5em 0.2em;
+	padding-right: 0.5em;
+	padding-top: 1.25em;
+	height: 230px;
+}
+.thermometer__c .thermometer__label {
+	height: 2em;
+}
+.thermometer__f {
+	background-size: 0.8em 1.125em, 0.5em 0.225em;
+	padding-top: 1.5em;
+	padding-left: 0.25em;
+	height: 230px;
+}
+.thermometer__f .thermometer__label {
+	height: 2.25em;
+}
+.thermometer__mercury {
+	background-color: hsl(355,85%,40%);
+	box-shadow:
+		-0.1em 0.1em 0.25em hsla(355,85%,40%,0.7),
+		0.05em 0 0 hsla(0,0%,100%,0.5) inset;
+	width: 100%;
+	transform: scaleY(0);
+	transform-origin: 50% 100%;
+	transition: transform 0.3s ease-in-out;
+}
+.thermometer__ring {
+	border-radius: 50% 50% 0 0;
+	box-shadow: 0 0.05em 0 0.05em hsla(223,10%,30%,0.4) inset;
+	top: 0.6em;
+	left: calc(50% - 0.3em);
+	width: 0.6em;
+	height: 0.2em;
+}
+.thermometer__ring + .thermometer__ring {
+	border-radius: 0 0 50% 50%;
+	box-shadow: 0 -0.05em 0 0.05em hsla(223,10%,30%,0.4) inset;
+	top: 20.2em;
+}
+.thermometer__title {
+	flex-basis: 50%;
+}
+.thermometer__tube, .thermometer__tube:before {
+	border-radius: 0.3em 0.3em 0 0;
+}
+.thermometer__tube {
+	box-shadow:
+		-0.1em 0.1em 0.25em hsla(0,0%,0%,0.3),
+		0.05em 0 0 hsla(0,0%,100%,0.5) inset,
+		0.1em 0 0.1em hsla(0,0%,0%,0.2) inset;
+	flex-basis: 0.3em;
+	background-color: red;
+	display: flex;
+	margin-top: auto;
+
+}
+.thermometer__bulb {
+	background-image: radial-gradient(100% 100% at 65% 35%,hsl(355,85%,55%) 12%,hsl(355,85%,40%) 13%,hsl(355,85%,30%));
+	border-radius: 50%;
+	box-shadow:
+		0 -0.25em 0.25em hsla(0,85%,20%,0.7),
+		-0.35em 0.35em 0.5em hsl(355,20%,50%),
+		0 0 0 0.1em hsl(223,10%,60%),
+		0 0 0 0.15em hsl(223,10%,90%),
+		0 0 0 0.2em hsl(223,10%,30%),
+		0 0 0 0.05em hsl(355,85%,30%) inset,
+		-0.1em 0.1em 0 hsl(355,85%,43%) inset;
+	margin: auto;
+	width: 2em;
+	height: 2em;
+}
         </style>
     </head>
     <body>

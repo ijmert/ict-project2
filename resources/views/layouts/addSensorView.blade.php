@@ -33,6 +33,7 @@
             <td> <select name="type">
                 <option>digitaal</option>
                 <option>chart</option>
+                <option>circle chart</option>
             </select> </td>
         </tr>
     </table>

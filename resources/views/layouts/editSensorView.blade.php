@@ -27,8 +27,8 @@
         <tr>
             <td>Type meter</td>
             <td> <select name="sensorType">
-                <option <?php if ($sensorData['type'] == 'Temperatuur'){ ?> selected <?php } ?> >Temperatuur</option>
-                <option <?php if ($sensorData['type'] == 'Vochtigheid'){ ?> selected <?php } ?> >Vochtigheid</option>
+                <option <?php if ($sensorData['type'] == 'chart'){ ?> selected <?php } ?> >chart</option>
+                <option <?php if ($sensorData['type'] == 'digitaal'){ ?> selected <?php } ?> >digitaal</option>
                 <option <?php if ($sensorData['type'] == 'CO2'){ ?> selected <?php } ?> >CO2</option>
             </select> </td>
         </tr>

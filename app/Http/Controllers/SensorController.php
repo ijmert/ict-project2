@@ -120,7 +120,7 @@ class SensorController extends Controller
         }
     } */
         
-        return 10;
+        return 30.1;
     }
     
 }
