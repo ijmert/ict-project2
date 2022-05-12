@@ -6,7 +6,8 @@
  */
 
 namespace App\Http\Controllers;
-
+use \App\Models\editAccount;
+use \App\Http\Requests\EditAccountRequest;
 /**
  * Description of EditAccountController
  *
@@ -14,10 +15,32 @@ namespace App\Http\Controllers;
  */
 class EditAccountController extends Controller{
     
-    public function __construct()
+
+    
+
+    public function __construct(editAccount $editAccount)
     {
         $this->middleware('auth');
+        $this->editAccount = $editAccount;
+        
+         
     }
     
+    
+    public function mainSiteConfig(){
+       
+        return view("layouts/editAccount");
+    }
+    
+    public function SaveChanges(EditAccountRequest $request)
+    {
+        $this->editAccount->SaveChanges();
+        $validated = $request->validated();
+    }
+    
+    public function DeleteUser()
+    {
+        $this->editAccount->DeleteUser(1);
+    }
     
 }

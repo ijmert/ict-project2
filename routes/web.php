@@ -36,8 +36,7 @@ Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConf
 
 Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
 Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
-
-
-
+Route::get('/editAccount', [App\Http\Controllers\EditAccountController::class, 'mainSiteConfig'])->name('accountTest');
+Route::get('/test', [App\Http\Controllers\EditAccountController::class,'DeleteUser']);
 
 

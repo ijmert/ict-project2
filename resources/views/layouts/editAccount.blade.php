@@ -5,6 +5,7 @@
 
 
 <table class="responsiveTable">
+<<<<<<< Updated upstream
     <tr>
         
     <form action="addSensor" method="post" >
@@ -22,31 +23,69 @@
             <table>
                 <tr>
                     <td style="width: 75%">
+
+    <form action="<?= 'studentCard'?>" method="post">
+    <div class="card mx-auto" style="width: 400px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-auto">
+                        E-mail adres :
+                    </div>
+                    <div class="col-md-auto">
+                        <input type="text" name="accountEditFormEmail"
+                               value="test">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-auto">
+                        Voornaam :
+                    </div>
+                    <div class="col-md-auto">
+                        <input type="text" name="accountEditFormFirstname"
+                               value="test"><br>
+
                         
-                        </td>
-                    <td style="width: 25%">
-                        <form action="deleteSensor" method="post">
-                            @csrf
-                            <button name="deleteSensorButton" type="submit" value="24">x</button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td>afbeelding</td>
-                </tr>
-                <tr>
-                    <td> 
-                        <form action="showEditSensor" method="post">
-                            @csrf
-                            <button name="EditSensorButton" type="submit" value="24"> aanpassen </button> 
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </td>
-        <?php } ?>
-                </tr>  
-       <?php } ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-auto">
+                        Achternaam : 
+                    </div>
+                    <div class="col-md-auto">
+                        <input type="text" name="accountEditFormLastname"
+                               value="test">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-auto">
+                        wachtwoord : 
+                    </div>
+                    <div class="col-md-auto">
+                        <input type="text" name="accountEditFormPasword"
+                               value="test">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-auto">
+                        herhaal wachtwoord : 
+                    </div>
+                    <div class="col-md-auto">
+                        <input type="text" name="accountEditFormRepeatPasword"
+                               value="test">
+                    </div>
+                </div>
+               
+                <div class ="row justify-content-around">
+                    <div class="col-md-auto">
+                        <button name="studentCardEditFormCancelBtn" type="submit" class="btn btn-danger" value="test">Cancel</button>
+                    </div>
+                    <div class="col-md-auto">
+                        <button name="studentCardEditFormUpdateBtn" type="submit" class="btn btn-danger" value="test">Save</button>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </form>
     
 </table>
 
