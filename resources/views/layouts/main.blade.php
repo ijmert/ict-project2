@@ -83,7 +83,7 @@ body { background: #f2f2f2; }
     color: #555;
     text-shadow: 1px 1px 1px white;
     font-family: 'Dosis';
-    font-size: 8px;
+    font-size: 80px;
     font-weight: 400;
     text-align: center;
 }
@@ -114,7 +114,7 @@ body { background: #f2f2f2; }
 		.graph {
 			display:block;
       width:100px;
-      height:200px;
+      height:270px;
 		}
 
 		.graph caption {

@@ -21,22 +21,29 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/showEditSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('editSensor');
+Route::post('/showEditSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor']); //view edit tonen
+Route::post('/editSensor', [App\Http\Controllers\sensorController::class, 'editSensor']);         //sensor Aanpassen
+Route::get('/showEditSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor']);  //wanneer fout
 
 
-Route::get('/editSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor'])->name('editSensor');
-Route::get('editSensor','App\Http\Controllers\sensorController@insertform');
-Route::post('editSensor','App\Http\Controllers\sensorController@editSensor');
+Route::post('/showAddSensor', [App\Http\Controllers\sensorController::class, 'showEditSensor']);
+Route::get('addSensor', 'App\Http\Controllers\sensorController@insertForm ');
+Route::post('add', 'App\Http\Controllers\sensorController@addSensor ');
 
-Route::post('/showAddSensor', [App\Http\Controllers\sensorController::class, 'showAddSensor'])->name('addSensor');
-Route::get('addSensor','App\Http\Controllers\sensorController@insertForm');
-Route::post('add','App\Http\Controllers\sensorController@addSensor');
 
 Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfig']);
+
 
 Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
 Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
 Route::get('/editAccount', [App\Http\Controllers\EditAccountController::class, 'mainSiteConfig'])->name('accountTest');
 Route::get('/test', [App\Http\Controllers\EditAccountController::class,'DeleteUser']);
+
+Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor']);
+Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor']);
+
+
+
+
 
 

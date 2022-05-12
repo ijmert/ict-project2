@@ -34,6 +34,7 @@
                 <option>digitaal</option>
                 <option>chart</option>
                 <option>circle chart</option>
+                <option>thermometer</option>
             </select> </td>
         </tr>
     </table>

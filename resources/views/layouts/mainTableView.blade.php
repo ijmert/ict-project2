@@ -2,9 +2,8 @@
 
 @section('content')
 <pre>
-<?php $rows = (count($data)/4) +1 ?>
+<?php $rows = (count($data['sensorData'])/4) +1 ?>
 <?php $counter = 0 ?>
-<?php echo $initials ?>
 <br>
 </pre>
 
@@ -59,7 +58,7 @@
                         <?php  } ?>
                         <?php if($data['sensorData'][$counter]['type'] == "chart"){ ?>
                         <?php $percent = $data['value'][$counter] /( $data['sensorData'][$counter]['max'] - $data['sensorData'][$counter]['min'] )*100 ?>
-                        <?php echo $percent ?>
+                          
                             <table class="graph">
                                 <thead>
                                         <tr>
@@ -94,15 +93,15 @@
                               </div>
                         <?php  } ?>
 
-                        <?php if($data['sensorData'][$counter]['type'] == "test"){ ?>
+                        <?php if($data['sensorData'][$counter]['type'] == "thermometer"){ ?>
                           <?php $interval = $data['sensorData'][$counter]['max']- $data['sensorData'][$counter]['min']; ?>
                           <?php $stepsLabel = $interval/8; $stepsMeter = 96/$interval;  ?>
                           <?php $value =( $data['value'][$counter] - $data['sensorData'][$counter]['min']) * $stepsMeter; ?>
-                          <?php echo $value ?>
+                          
                           <div class="thermometerBody">
                             <div class="thermometer">
                               <div class="thermometer__inner">
-                                <div class="thermometer__title">°C</div>
+                                <div class="thermometer__title"><?php echo $data['sensorData'][$counter]['unit'] ?> </div>
                                 <div class="thermometer__title"></div>
                                 <div class="thermometer__c">
                                   <div class="thermometer__label"><?php echo $data['sensorData'][$counter]['max']-$stepsLabel ?></div>
