@@ -114,7 +114,7 @@ body { background: #f2f2f2; }
 		.graph {
 			display:block;
       width:100px;
-      height:270px;
+      height:245px;
 		}
 
 		.graph caption {

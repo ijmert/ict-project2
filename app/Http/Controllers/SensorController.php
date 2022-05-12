@@ -19,7 +19,6 @@ class SensorController extends Controller
     }
     public function siteConfig() {  
         $id = auth()->user()->id;
-        
         $SensorData = sensor::where('users_id', $id)->get();
         $data['sensorData'] = $SensorData;
         for($i=0; $i<count($SensorData);$i++){
@@ -27,7 +26,7 @@ class SensorController extends Controller
            $data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
         }  
        // $data['value'] = 10;
-        $name = User::where('id', 2)->get();
+        $name = User::where('id', $id)->get();
         $preName = explode(' ', $name[0]['name'])[0];
         $postName = explode(' ', $name[0]['name'])[1];
         $data['initials'] = substr($preName, 0, 1);
@@ -80,7 +79,7 @@ class SensorController extends Controller
             //invoegen in database
             $affected = DB::table('sensors')
                         ->where('id', $id)
-                        ->update(['topic' => $topic, 'type' => $type, 'unit' => $unit, 'min'=>$min, 'max'=>$max, ]);
+                        ->update(['topic' => $topic, 'type' => $type, 'unit' => $unit, 'min'=>$min, 'max'=>$max ]);
             
             $SensorData = $this->siteConfig(); 
         $id = auth()->user()->id;

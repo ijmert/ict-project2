@@ -24,14 +24,14 @@
         <?php
             for ($ColCounter = 1;$ColCounter <=4 && $counter < count($data['sensorData']);$ColCounter++){?>
         <!-- <td> -->
-      <div class="col-md">
+      <div class="col-md" style="max-width: 310px;">
             <table>
                 <tr>
-                    <td style="width: 75%">
+                    <td >
                         <?php echo $data['sensorData'][$counter]['topic']; ?>
                         
                     </td>
-                    <td style="width: 25%">
+                    <td >
                         <form action="deleteSensor" method="post">
                             @csrf
                             <button name="deleteSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>">x</button>
@@ -58,7 +58,7 @@
                         <?php  } ?>
                         <?php if($data['sensorData'][$counter]['type'] == "chart"){ ?>
                         <?php $percent = $data['value'][$counter] /( $data['sensorData'][$counter]['max'] - $data['sensorData'][$counter]['min'] )*100 ?>
-                          
+                        <?php echo $data['value'][$counter] ?> <?php echo $data['sensorData'][$counter]['unit'] ?>
                             <table class="graph">
                                 <thead>
                                         <tr>
@@ -88,7 +88,7 @@
                                       a 15.9155 15.9155 0 0 1 0 31.831
                                       a 15.9155 15.9155 0 0 1 0 -31.831"
                                   />
-                                  <text x="18" y="20.35" class="percentage"><?php echo round($percent,2) ?>%</text>
+                                  <text x="18" y="20.35" class="percentage"><?php echo $data['value'][$counter] ?></text>
                                 </svg>
                               </div>
                         <?php  } ?>
