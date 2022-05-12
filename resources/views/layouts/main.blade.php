@@ -440,7 +440,11 @@ progress{
                             @csrf
                         </form>
                       </li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><form action="showEditAccount" method="POST">
+                                      @csrf
+                                      <button type="submit" >edit account</button>
+                          </form></li>
+                          
                       <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                   </div>
