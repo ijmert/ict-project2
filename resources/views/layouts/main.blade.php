@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-                                    
+
 <html lang = "nl">
     <head>
         <title>Sensor Monitoring Tool</title>
@@ -22,8 +22,8 @@
                 font-size: 30px;
                 padding: 15px;
             }
-            
-            
+
+
               @import url(https://fonts.googleapis.com/css?family=Dosis:200,400,500,600);
 html, body { height: 100%; }
 body { background: #f2f2f2; }
@@ -31,8 +31,8 @@ body { background: #f2f2f2; }
 .de .den, .de .dene, .de .denem, .de .deneme { position: absolute;  left: 50%; top: 50%; }
 .de {
     position: relative;
-    width: 240px;
-    height: 240px;
+    width: 100%;
+    height: 100%;
     border-radius: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     background-color: transparent;
@@ -93,28 +93,11 @@ body { background: #f2f2f2; }
 
 
 
-.graph {
-	margin-bottom:1em;
-  font:normal 100%/150% arial,helvetica,sans-serif;
-}
-
-.graph caption {
-	font:bold 150%/120% arial,helvetica,sans-serif;
-	padding-bottom:0.33em;
-}
-
-.graph tbody th {
-	text-align:right;
-}
-
-@supports (display:grid) {
-
-	@media (min-width:32em) {
 
 		.graph {
 			display:block;
-      width:100px;
-      height:245px;
+      width:200px;
+      height:225px;
 		}
 
 		.graph caption {
@@ -219,11 +202,11 @@ body { background: #f2f2f2; }
 		.toggleGraph:checked + table td span,
 		.graph tr:hover td span {
 			width:4em;
-			margin-left:-2em; 
+			margin-left:-2em;
 			opacity:1;
 		}
-	} 
-} 
+	}
+}
         /*circle cart */
         .flex-wrapper {
   display: flex;
@@ -252,7 +235,6 @@ body { background: #f2f2f2; }
   stroke-width: 2.8;
   stroke-linecap: round;
   animation: progress 1s ease-out forwards;
-  stroke: red;
 }
 
 @keyframes progress {
@@ -442,14 +424,14 @@ progress{
                       </li>
                               <li><form action="showEditAccount" method="POST">
                                       @csrf
-                                      <button type="submit" >edit account</button>
-                          </form></li>
-                          
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                      <button type="submit" style="background-color: none">edit account</button>
+                          </form>
+                        </li>
+
                     </ul>
                   </div>
             </span>
-        </nav> 
+        </nav>
         <main style="width: 100%">
             @yield('content')
         </main>
