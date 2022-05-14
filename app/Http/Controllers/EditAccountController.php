@@ -72,6 +72,15 @@ class EditAccountController extends Controller{
             //$id = auth()->user()->id;
             return view("layouts/mainTableView", ['data' => $sensorData]);
         }
+        else if (isset($_POST['deleteSensorButton']))
+        {
+           $id = auth()->user()->id;
+            
+            DB::table('users')->where('id', $id)->delete();
+
+            return view("welcome");
+            
+        }
         else
         {
             $validatedData = $request->validate([
@@ -85,47 +94,37 @@ class EditAccountController extends Controller{
             $email = request()->input('email');
             $password = request()->input('password');
             $oldpass= request()->input('oldpass');
-            
             $userInfo = User::where('id', $id)->first();
             
-            
-            
-            if($userInfo['password'] == Hash::make($oldpass)){
+            if(Hash:: check ($oldpass, $userInfo['password'])){
                 
                 if($password != ""){
                     DB::table('users')
                         ->where ('id', $id)
-                        ->update(['name' => $name, 'email' => $email,'password' => $password ]);
+                        ->update(['name' => $name, 'email' => $email,'password' => Hash::make($password)]);
                 }else{
                     DB::table('users')
                         ->where ('id', $id)
                         ->update(['name' => $name, 'email' => $email]);
                 }
-                    
-                
+                $sensorData = $this->siteConfig();    
+                return view("layouts/mainTableView", ['data' => $sensorData]);
                 
                 
             }else{
-                var_dump($userInfo);
-                die;
-                
+                echo "<script>alert('wachtwoord is fout!');</script>";
+                $id = auth()->user()->id;
+                $userData = User::where('id', $id)->first();
+
+                return view("layouts/editAccount", ['userData' => $userData]);
             }
-            //nog password decrypten
-            //$password = $password;
-        
             
             
             
-            $sensorData = $this->siteConfig();
             
             
-            return view("layouts/mainTableView", ['data' => $sensorData]);
         }
     }
     
-    public function DeleteUser()
-    {
-        $this->editAccount->DeleteUser(1);
-    }
     
 }

@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td>E-mail</td>
-            <td><input type="text" name="email" value="{{$userData['email'] }}"></td>
+            <td><input type="email" name="email" value="{{$userData['email'] }}"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <td>old password</td>
-            <td><input type="text" name="oldpass""></td>
+            <td><input type="password" name="oldpass""></td>
             
         </tr>
         <tr>
@@ -47,7 +47,7 @@
         
         <tr>
             <td>new password</td>
-            <td><input type="text" name="password" ></td>
+            <td><input type="password" name="password" ></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -60,6 +60,7 @@
     </table>
     <button name="AnnuleerBtn" type="submit" value="">Annuleren</button>
     <button name="EditButon" type="submit">Pas aan</button>
+    <button name="deleteSensorButton" type="submit">Delete account</button>
 </form>
 </div>
 
