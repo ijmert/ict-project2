@@ -17,97 +17,110 @@ class SensorController extends Controller
     {
         $this->middleware('auth');
     }
+    
     public function siteConfig() {  
         $id = auth()->user()->id;
         $SensorData = sensor::where('users_id', $id)->get();
         $data['sensorData'] = $SensorData;
         for($i=0; $i<count($SensorData);$i++){
-          //$data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);  
+           //$data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);  
            $data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
         }  
-       // $data['value'] = 10;
+        // $data['value'] = 10;
         $name = User::where('id', $id)->get();
         $preName = explode(' ', $name[0]['name'])[0];
         $postName = explode(' ', $name[0]['name'])[1];
         $data['initials'] = substr($preName, 0, 1);
         $data['initials'] .= substr($postName, 0, 1);
-     /*   $data['sensor'] = $SensorData;*/
+        //$data['sensor'] = $SensorData;
         return $data;
     }
+    
     public function mainSiteConfig(){
         $data = $this->siteConfig();
-       $id = auth()->user()->id;
+        $id = auth()->user()->id;
         return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
     }
+    
+                    ////Sensor Aanpassen////
+    
     public function showEditSensor(Request $request){
-        if (isset($_POST['EditSensorButton'])) {
-         
-         $id= $request->input('EditSensorButton');
+        if (isset($_POST['EditSensorButton'])) 
+        {                   
+            $id= $request->input('EditSensorButton');
             //data opzoeken van deze ID
-         $sensorData = sensor::where('id', $id)->first();
+            $sensorData = sensor::where('id', $id)->first();         
          
-         
-        return view("layouts/editSensorView", ['sensorData'=>$sensorData]);   
+            return view("layouts/editSensorView", ['sensorData'=>$sensorData]);   
         }
-        else{
+        else
+        {           
             $id = 8;
             $sensorData = sensor::where('id', $id)->first();
             return view("layouts/editSensorView", ['sensorData'=>$sensorData]);
         }
-
     }
     
-    public function editSensor(Request  $request){
+    public function editSensor(Request $request){
        
-         if (isset($_POST['EditButon'])){
-            $validatedData = $request->validate([
-                'topic' => 'required|exists:sensor_last_measurements',
-                'max' => 'required|integer',
-                'min' => 'required|integer',
-                'unit' => 'required',
-                'type'=> 'required'
-            ]);
+        if (isset($_POST['EditButon'])){
+           $validatedData = $request->validate([
+               'topic' => 'required|exists:sensor_last_measurements',
+               'max' => 'required|integer',
+               'min' => 'required|integer',
+               'unit' => 'required',
+               'type'=> 'required'
+           ]);
 
-             $id =$_POST['EditButon']; // $request->input('EditButon');
-             $topic = $request->input('topic');
-             $max = $request->input('max');
-             $min = $request->input('min');
-             $unit = $request->input('unit');
-             $type = $request->input('type');
-             
-            
-            //invoegen in database
-            $affected = DB::table('sensors')
-                        ->where('id', $id)
-                        ->update(['topic' => $topic, 'type' => $type, 'unit' => $unit, 'min'=>$min, 'max'=>$max ]);
-            
-            $SensorData = $this->siteConfig(); 
-        $id = auth()->user()->id;
-        return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
-         }else{
+           $id =$_POST['EditButon']; // $request->input('EditButon');
+           $topic = $request->input('topic');
+           $max = $request->input('max');
+           $min = $request->input('min');
+           $unit = $request->input('unit');
+           $type = $request->input('type');
 
-         $data = $this->siteConfig();
-         $id = auth()->user()->id;
-         return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
-         }
+           //invoegen in database
+           $affected = DB::table('sensors')
+                       ->where('id', $id)
+                       ->update(['topic' => $topic, 'type' => $type, 'unit' => $unit, 'min'=>$min, 'max'=>$max ]);
+
+           $SensorData = $this->siteConfig(); 
+           $id = auth()->user()->id;
+           
+           return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
+        }
+        else
+        {
+            $data = $this->siteConfig();
+            $id = auth()->user()->id;          
+            return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
+        }
     }
+    
+                ////Sensor Toevoegen////
+    
     public function showAddSensor(){
 
         return view("layouts/addSensorView"); 
         
     }
-    public function insertform(){
-        $SensorData = $this->siteConfig();
-        $id = auth()->user()->id;
-        return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
-    }
         
     public function addSensor(Request $request){
-        if (isset($_POST['AnnuleerButton'])){
-        $data = $this->siteConfig();
-       $id = auth()->user()->id;
-        return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
+        if (isset($_POST['AnnuleerButton']))
+        {
+            $data = $this->siteConfig();
+            $id = auth()->user()->id;
+            return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
         }
+        
+        $validatedData = $request->validate
+        ([
+            'topic' => 'required',
+            'max' => 'required|integer',
+            'min' => 'required|integer',
+            'unit' => 'required',
+            'type'=> 'required'
+        ]);
         
         $topic = $request->input('topic');
         $type = $request->input('type');
@@ -120,8 +133,11 @@ class SensorController extends Controller
         
         $SensorData = $this->siteConfig();
         $id = auth()->user()->id;
+        
         return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
     }          
+    
+                ////Sensor Verwijderen////
     
     public function deleteSensor(Request $request) {
         $id = $request->input('deleteSensorButton');
