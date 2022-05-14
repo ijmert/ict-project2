@@ -58,6 +58,8 @@ class EditAccountController extends Controller{
         
         //nog password decrypten
         //$userData['password'] = $userData['password'];
+        $userData['firstName'] = explode(' ', $userData['name'])[0];
+        $userData['lastName'] = explode(' ', $userData['name'])[1];
         
         return view("layouts/editAccount", ['userData' => $userData]);
         
@@ -84,17 +86,22 @@ class EditAccountController extends Controller{
         else
         {
             $validatedData = $request->validate([
-                'name' => 'required',
+                'firstName' => 'required',
+                'lastName' => 'required',
                 'email' => 'required|email',
-                //'password' => 'required', 
                 'oldpass' => 'required',
             ]);
             $id = auth()->user()->id;
-            $name = request()->input('name');
+            $firstName = request()->input('firstName');
+            $lastName = request()->input('lastName');
             $email = request()->input('email');
             $password = request()->input('password');
             $oldpass= request()->input('oldpass');
             $userInfo = User::where('id', $id)->first();
+            
+            $name = trim($firstName);
+            $name .= " ";
+            $name .= trim($lastName);
             
             if(Hash:: check ($oldpass, $userInfo['password'])){
                 
@@ -115,7 +122,9 @@ class EditAccountController extends Controller{
                 echo "<script>alert('wachtwoord is fout!');</script>";
                 $id = auth()->user()->id;
                 $userData = User::where('id', $id)->first();
-
+                $userData['firstName'] = explode(' ', $userData['name'])[0];
+                $userData['lastName'] = explode(' ', $userData['name'])[1];
+                
                 return view("layouts/editAccount", ['userData' => $userData]);
             }
             

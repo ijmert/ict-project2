@@ -11,13 +11,23 @@
     
     <table>
         <tr>
-            <td>Name</td>
-            <td><input type="text" name="name" value=" {{$userData['name'] }} " >         </td>
+            <td>voornaam</td>
+            <td><input type="text" name="firstName" value=" {{$userData['firstName'] }} " >         </td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
-                @if ($errors->has('name'))
-                    {{ $errors->first('name') }}
+                @if ($errors->has('firstName'))
+                    {{ $errors->first('firstName') }}
+                @endif
+            </td>
+        </tr>
+        <td>achternaam</td>
+            <td><input type="text" name="lastName" value=" {{$userData['lastName'] }} " >         </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color:red">
+                @if ($errors->has('lastName'))
+                    {{ $errors->first('lastName') }}
                 @endif
             </td>
         </tr>
