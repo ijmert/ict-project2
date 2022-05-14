@@ -33,8 +33,18 @@ Route::post('add', 'App\Http\Controllers\sensorController@addSensor');
 
 Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConfig']);
 
+
+Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
+Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor'])->name('deleteSensor');
+
+Route::get('/showEditAccount', [App\Http\Controllers\EditAccountController::class, 'mainSiteConfig'])->name('accountTest');
+Route::post('/editAccount', [App\Http\Controllers\EditAccountController::class, 'editAccount']);
+Route::post('/showEditAccount', [App\Http\Controllers\EditAccountController::class, 'mainSiteConfig'])->name('accountTest');
+Route::post('/test', [App\Http\Controllers\EditAccountController::class,'DeleteUser']);
+
 Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor']);
 Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor']);
+
 
 
 

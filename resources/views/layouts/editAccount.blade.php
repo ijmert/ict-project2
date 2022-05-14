@@ -3,51 +3,64 @@
 @section('content')
 
 
-
-<table class="responsiveTable">
-    <tr>
-        
-    <form action="addSensor" method="post" >
-             @csrf
-             <td colspan="4"> <button>sensor toevoegen</button> </td>
-    </form>
-    </tr>
-     <?php
-     $counter = 0;
-    for ($RowCounter = 1;$RowCounter <= 3 ;$RowCounter++){?>
-    <tr>
-        <?php
-            for ($ColCounter = 1;$ColCounter <=4;$ColCounter++){?>
-        <td>
-            <table>
-                <tr>
-                    <td style="width: 75%">
-                        
-                        </td>
-                    <td style="width: 25%">
-                        <form action="deleteSensor" method="post">
-                            @csrf
-                            <button name="deleteSensorButton" type="submit" value="24">x</button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td>afbeelding</td>
-                </tr>
-                <tr>
-                    <td> 
-                        <form action="showEditSensor" method="post">
-                            @csrf
-                            <button name="EditSensorButton" type="submit" value="24"> aanpassen </button> 
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </td>
-        <?php } ?>
-                </tr>  
-       <?php } ?>
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<label class="labelTest">Sensor aanpassen</label>
+<div class="containerTable">
+<form action="{{ url('editAccount') }}" method="POST" class="SensorFrom">
+{{ csrf_field() }}
     
-</table>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" value=" {{$userData['name'] }} " >         </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color:red">
+                @if ($errors->has('name'))
+                    {{ $errors->first('name') }}
+                @endif
+            </td>
+        </tr>
+        <tr>
+            <td>E-mail</td>
+            <td><input type="text" name="email" value="{{$userData['email'] }}"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color:red">
+                @if ($errors->has('email'))
+                    {{ $errors->first('email') }}
+                @endif
+            </td>
+        </tr>
+        <tr>
+            <td>old password</td>
+            <td><input type="text" name="oldpass""></td>
+            
+        </tr>
+        <tr>
+            <td colspan="2" style="color:red">
+                @if ($errors->has('oldpass'))
+                    {{ $errors->first('oldpass') }}
+                @endif
+            </td>
+        </tr>
+        
+        <tr>
+            <td>new password</td>
+            <td><input type="text" name="password" ></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color:red">
+                @if ($errors->has('password'))
+                    {{ $errors->first('password') }}
+                @endif
+            </td>
+        </tr>
+        
+    </table>
+    <button name="AnnuleerBtn" type="submit" value="">Annuleren</button>
+    <button name="EditButon" type="submit">Pas aan</button>
+</form>
+</div>
 
 @endsection
