@@ -422,9 +422,9 @@ progress{
                             @csrf
                         </form>
                       </li>
-                              <li><form action="showEditAccount" method="POST">
+                              <li><form action="showEditAccount" method="POST" >
                                       @csrf
-                                      <button type="submit" style="background-color: none">edit account</button>
+                                      <button type="submit" style="background-color: white; color: black;; border: none">edit account</button>
                           </form>
                         </li>
 

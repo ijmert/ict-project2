@@ -9,9 +9,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <label class="labelTest">Sensor toevoegen</label>
 <div class="containerTable">
-<form action="/addSensor" method="post" class="SensorForm" action="/action_page.php">
-<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>"><input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-
+<form action="{{ url('addSensor') }}" method="post" class="SensorForm" action="/action_page.php">
+{{ csrf_field() }}
     <table>
         <tr>
             <td>Topic</td>
@@ -64,7 +63,7 @@
                 <option>digitaal</option>
                 <option>CO2</option>
                 <option>thermometer</option>
-                </select> 
+                </select>
             </td>
         </tr>
     </table>
