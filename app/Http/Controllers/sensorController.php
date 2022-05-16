@@ -55,8 +55,9 @@ class SensorController extends Controller
             $id= $request->input('EditSensorButton');
             //data opzoeken van deze ID
             $sensorData = sensor::where('id', $id)->first();
-            $initials = $this->getInitials();
-            return view("layouts/editSensorView", ['sensorData'=>$sensorData], ['initials'=>$initials]);
+            $sensorData['initials'] = $this->getInitials();
+            $topics = $this->getAllTopics();
+            return view("layouts/editSensorView", ['sensorData'=>$sensorData], ['topics'=>$topics]);
         }
         else
         {
@@ -105,7 +106,8 @@ class SensorController extends Controller
 
     public function showAddSensor(){
         $initials = $this->getInitials();
-        return view("layouts/addSensorView", ['initials'=>$initials]);
+        $topics = $this->getAllTopics();
+        return view("layouts/addSensorView", ['initials'=>$initials], ['topics'=>$topics]);
 
     }
 
@@ -165,7 +167,8 @@ class SensorController extends Controller
 
     public function getAllTopics(){
         $topics = Sensor_last_measurement::all();
-        return view("layouts/test" , ['data'=>$topics]);
+        return $topics;
+        //return view("layouts/test" , ['data'=>$topics]);
     }
 
 }

@@ -10,7 +10,12 @@
     <table>
         <tr>
             <td>Topic</td>
-            <td><input class="InputBox" type="text" name="topic" value=" {{$sensorData['topic'] }} " >         </td>
+            <td><select class="SelectBox" name="topic" >
+                <option class="optionGroup" selected disabled>Choose topic</option>
+                <?php foreach ($topics as $topic) { ?>
+                  <option <?php if ($sensorData['topic'] == $topic['topic']){ ?> selected <?php } ?>> <?php echo $topic['topic']; ?> </option>
+                <?php } ?>
+            </select>         </td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -57,7 +62,7 @@
             <td> <select class="SelectBox" name="type">
                 <option <?php if ($sensorData['type'] == 'chart'){ ?> selected <?php } ?> >chart</option>
                 <option <?php if ($sensorData['type'] == 'digital'){ ?> selected <?php } ?> >digitaal</option>
-                <option <?php if ($sensorData['type'] == 'circle chart'){ ?> selected <?php } ?> >CO2</option>
+                <option <?php if ($sensorData['type'] == 'circle chart'){ ?> selected <?php } ?> >circle chart</option>
                 <option <?php if ($sensorData['type'] == 'thermometer'){ ?> selected <?php } ?> >thermometer</option>
             </select> </td>
         </tr>
@@ -69,5 +74,5 @@
 
 @endsection
 @section('initials')
-<?php echo $initials ?>
+<?php echo $sensorData['initials'] ; ?>
 @endsection
