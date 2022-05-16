@@ -20,25 +20,49 @@ class sensorsTableSeeder extends Seeder
      'topic' => 'sensor in',
      'type' => 'sensor',
      'unit' => 'celcius, C',
-     'min' => '5°',
-     'max' => '20°',
-     'user_id' =>'1',
+     'min' => '5',
+     'max' => '20',
+     'users_id' =>'1',
      ]);
      DB::table('sensors')->insert([
      'topic' => 'sensor in',
-     'type' => 'sensor',
-     'unit' => 'celcius, C',
-     'min' => '-15°',
-     'max' => '32°',
-     'user_id' =>'2',
+     'type' => 'thermometer',
+     'unit' => 'km',
+     'min' => '15',
+     'max' => '320',
+     'users_id' =>'1',
      ]);
      DB::table('sensors')->insert([
+     'topic' => 'maarten',
+     'type' => 'digitaal',
+     'unit' => 'graden',
+     'min' => '0',
+     'max' => '10',
+     'users_id' =>'3',
+     ]);
+          DB::table('sensors')->insert([
      'topic' => 'sensor in',
-     'type' => 'sensor',
-     'unit' => 'celcius, C',
-     'min' => '0°',
-     'max' => '10°',
-     'user_id' =>'3',
+     'type' => 'circle chart',
+     'unit' => 'graden',
+     'min' => '7',
+     'max' => '30',
+     'users_id' =>'2',
+     ]);
+               DB::table('sensors')->insert([
+     'topic' => 'maarten',
+     'type' => 'chart',
+     'unit' => 'bpm',
+     'min' => '100',
+     'max' => '200',
+     'users_id' =>'1',
+     ]);
+                    DB::table('sensors')->insert([
+     'topic' => 'sensor2',
+     'type' => 'chart',
+     'unit' => 'graden',
+     'min' => '0',
+     'max' => '10',
+     'users_id' =>'3',
      ]);
         //
     }
