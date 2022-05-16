@@ -14,7 +14,7 @@
     <table>
         <tr>
             <td>Topic</td>
-            <td><input type="text" name="topic"></td>
+            <td><input class="InputBox" type="text" name="topic"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td>Maximum</td>
-            <td><input type="text" name="max"></td>
+            <td><input class="InputBox" type="text" name="max"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -36,7 +36,7 @@
         </tr>
         <tr>
             <td>Minimum</td>
-            <td><input type="text" name="min"></td>
+            <td><input class="InputBox" type="text" name="min"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -47,7 +47,7 @@
         </tr>
         <tr>
             <td>Eenheid</td>
-            <td><input type="text" name="unit"></td>
+            <td><input class="InputBox" type="text" name="unit"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -58,7 +58,7 @@
         </tr>
         <tr>
             <td>Type meter</td>
-            <td> <select name="type">
+            <td> <select class="SelectBox" name="type">
                 <option>chart</option>
                 <option>digitaal</option>
                 <option>CO2</option>

@@ -10,7 +10,7 @@
     <table>
         <tr>
             <td>Topic</td>
-            <td><input type="text" name="topic" value=" {{$sensorData['topic'] }} " >         </td>
+            <td><input class="InputBox" type="text" name="topic" value=" {{$sensorData['topic'] }} " >         </td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <td>Maximum</td>
-            <td><input type="text" name="max" value="{{$sensorData['max'] }}"></td>
+            <td><input class="InputBox" type="text" name="max" value="{{$sensorData['max'] }}"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td>Minimum</td>
-            <td><input type="text" name="min" value="{{$sensorData['min'] }}"></td>
+            <td><input class="InputBox" type="text" name="min" value="{{$sensorData['min'] }}"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <td>Eenheid</td>
-            <td><input type="text" name="unit" value="{{$sensorData['unit'] }}"></td>
+            <td><input class="InputBox" type="text" name="unit" value="{{$sensorData['unit'] }}"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -54,7 +54,7 @@
         </tr>
         <tr>
             <td>Type meter</td>
-            <td> <select name="type">
+            <td> <select class="SelectBox" name="type">
                 <option <?php if ($sensorData['type'] == 'chart'){ ?> selected <?php } ?> >chart</option>
                 <option <?php if ($sensorData['type'] == 'digitaal'){ ?> selected <?php } ?> >digitaal</option>
                 <option <?php if ($sensorData['type'] == 'CO2'){ ?> selected <?php } ?> >CO2</option>
