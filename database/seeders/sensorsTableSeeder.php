@@ -27,7 +27,7 @@ class sensorsTableSeeder extends Seeder
      DB::table('sensors')->insert([
      'topic' => 'corona',
      'type' => 'chart',
-     'unit' => 'graden',
+     'unit' => 'degree',
      'min' => '0',
      'max' => '12',
      'users_id' =>'1',
@@ -38,12 +38,12 @@ class sensorsTableSeeder extends Seeder
      'unit' => 'km',
      'min' => '10',
      'max' => '100',
-     'users_id' =>'2',
+     'users_id' =>'3',
      ]);
           DB::table('sensors')->insert([
      'topic' => 'co3',
      'type' => 'circle chart',
-     'unit' => 'graden',
+     'unit' => 'degree',
      'min' => '0',
      'max' => '37',
      'users_id' =>'2',
@@ -52,25 +52,25 @@ class sensorsTableSeeder extends Seeder
      'topic' => 'co2',
      'type' => 'digital',
      'unit' => '°',
-     'min' => '-20',
+     'min' => '0',
      'max' => '12',
      'users_id' =>'1',
      ]);
                     DB::table('sensors')->insert([
      'topic' => 'opapa',
      'type' => 'digital',
-     'unit' => 'graden',
+     'unit' => 'degree',
      'min' => '0',
      'max' => '30',
-     'users_id' =>'2',
+     'users_id' =>'3',
      ]);
      DB::table('sensors')->insert([
      'topic' => 'sensor out',
      'type' => 'thermometer',
-     'unit' => 'graden',
+     'unit' => 'degree',
      'min' => '0',
      'max' => '10',
-     'users_id' =>'2',
+     'users_id' =>'3',
      ]);
      DB::table('sensors')->insert([
      'topic' => 'iets',
@@ -83,7 +83,7 @@ class sensorsTableSeeder extends Seeder
      DB::table('sensors')->insert([
      'topic' => 'maarten3',
      'type' => 'circle chart',
-     'unit' => 'graden',
+     'unit' => 'degree',
      'min' => '0',
      'max' => '30',
      'users_id' =>'2',
