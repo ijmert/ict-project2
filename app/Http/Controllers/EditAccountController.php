@@ -11,6 +11,7 @@ use \App\Models\editAccount;
 use \App\Http\Requests\EditAccountRequest;
 use Illuminate\Http\Request;
 use App\Models\sensor;
+use App\Http\Controllers\Auth;
 Use App\Models\Sensor_last_measurement;
 use DB;
 use App\Models\User;
@@ -93,8 +94,9 @@ class EditAccountController extends Controller{
 
                 DB::table('users')->where('id', $id)->delete();
                 
-                
                 return view("welcome");
+                
+                Auth::logout();
             }
             else
             {
