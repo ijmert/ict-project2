@@ -12,7 +12,7 @@
     <table>
         <tr>
             <td>Firstname</td>
-            <td><input type="text" name="firstName" value=" {{$userData['firstName'] }} " >         </td>
+            <td><input class="InputBox" type="text" name="firstName" value=" {{$userData['firstName'] }} " >         </td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -22,7 +22,7 @@
             </td>
         </tr>
         <td>Lastname</td>
-            <td><input type="text" name="lastName" value=" {{$userData['lastName'] }} " >         </td>
+            <td><input class="InputBox" type="text" name="lastName" value=" {{$userData['lastName'] }} " >         </td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td>E-mail</td>
-            <td><input type="email" name="email" value="{{$userData['email'] }}"></td>
+            <td><input class="InputBox" type="email" name="email" value="{{$userData['email'] }}"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -44,7 +44,7 @@
         </tr>
         <tr>
             <td>old password</td>
-            <td><input type="password" name="oldpass""></td>
+            <td><input class="InputBox" type="password" name="oldpass""></td>
 
         </tr>
         <tr>
@@ -57,7 +57,7 @@
 
         <tr>
             <td>new password</td>
-            <td><input type="password" name="password" ></td>
+            <td><input class="InputBox" type="password" name="password" ></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
