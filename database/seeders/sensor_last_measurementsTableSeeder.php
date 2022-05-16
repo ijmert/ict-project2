@@ -17,24 +17,17 @@ class sensor_last_measurementsTableSeeder extends Seeder
     public function run()
     {
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '20',
-     'topic' => 'sensor in',
+     'LastMeasurement' => '150',
+     'topic' => 'sensor2',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '5',
+     'LastMeasurement' => '9',
      'topic' => 'sensor out',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
-     DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '10',
-     'topic' => 'maarten',
-     'created_at' => NULL,
-     'updated_at' => NULL,
-     ]);
-     
      DB::table('sensor_last_measurements')->insert([
      'LastMeasurement' => '4',
      'topic' => 'maarten3',
@@ -43,12 +36,31 @@ class sensor_last_measurementsTableSeeder extends Seeder
      ]);
      
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '0',
-     'topic' => 'co3',
+     'LastMeasurement' => '35',
+     'topic' => 'iets',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      
+     DB::table('sensor_last_measurements')->insert([
+     'LastMeasurement' => '4',
+     'topic' => 'opapa',
+     'created_at' => NULL,
+     'updated_at' => NULL,
+     ]);
+     
+     DB::table('sensor_last_measurements')->insert([
+     'LastMeasurement' => '9',
+     'topic' => 'corona',
+     'created_at' => NULL,
+     'updated_at' => NULL,
+     ]);
+     DB::table('sensor_last_measurements')->insert([
+     'LastMeasurement' => '5',
+     'topic' => 'co3',
+     'created_at' => NULL,
+     'updated_at' => NULL,
+     ]);
      DB::table('sensor_last_measurements')->insert([
      'LastMeasurement' => '5',
      'topic' => 'co2',
