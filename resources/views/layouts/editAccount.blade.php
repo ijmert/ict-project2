@@ -66,6 +66,17 @@
                 @endif
             </td>
         </tr>
+        <tr>
+            <td>confirm new password</td>
+            <td><input class="InputBox" type="password" name="confPassword" ></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color:red">
+                @if ($errors->has('password'))
+                    {{ $errors->first('confPassword') }}
+                @endif
+            </td>
+        </tr>
 
     </table>
     <button name="AnnuleerBtn" type="submit" value="">Cancel</button>
