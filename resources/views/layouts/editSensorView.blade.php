@@ -6,7 +6,7 @@
 <div class="containerTable">
 <form action="{{ url('editSensor') }}" method="POST" class="SensorFrom">
 {{ csrf_field() }}
-    
+
     <table>
         <tr>
             <td>Topic</td>
@@ -67,4 +67,7 @@
 </form>
 </div>
 
+@endsection
+@section('initials')
+<?php echo $data['initials'] ?>
 @endsection
