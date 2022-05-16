@@ -423,7 +423,7 @@ progress{
                         </form>
                       </li>
                         <a class="dropdown-item" href="{{route ('showEditAccount') }}" onclick="event.preventDefault(); document.getElementById('showEditAccount-form').submit();" {{ __('Logout') }}>
-                            show
+                            Edit account
                         </a>
                         <form id="showEditAccount-form" action="{{ route('showEditAccount') }}" method="POST" class="d-none">
                             @csrf

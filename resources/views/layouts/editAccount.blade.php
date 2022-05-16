@@ -11,7 +11,7 @@
 
     <table>
         <tr>
-            <td>voornaam</td>
+            <td>Firstname</td>
             <td><input type="text" name="firstName" value=" {{$userData['firstName'] }} " >         </td>
         </tr>
         <tr>
@@ -21,7 +21,7 @@
                 @endif
             </td>
         </tr>
-        <td>achternaam</td>
+        <td>Lastname</td>
             <td><input type="text" name="lastName" value=" {{$userData['lastName'] }} " >         </td>
         </tr>
         <tr>
@@ -69,7 +69,7 @@
 
     </table>
     <button name="AnnuleerBtn" type="submit" value="">Cancel</button>
-    <button name="EditButon" type="submit">Edit </button>
+    <button name="EditButon" type="submit">Save edit </button>
     <button name="deleteSensorButton" type="submit">Delete account</button>
 </form>
 </div>
