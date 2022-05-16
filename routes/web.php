@@ -41,7 +41,7 @@ Route::get('/home', [App\Http\Controllers\sensorController::class, 'mainSiteConf
 Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor']);
 Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor']);
 
-Route::get('/showEditAccount', [App\Http\Controllers\EditAccountController::class, 'mainSiteConfig']);
+Route::get('/showEditAccount', [App\Http\Controllers\EditAccountController::class, 'mainSiteConfig'])->name('showEditAccount');;
 Route::post('/editAccount', [App\Http\Controllers\EditAccountController::class, 'editAccount']);
 Route::post('/showEditAccount', [App\Http\Controllers\EditAccountController::class, 'mainSiteConfig']);
 
