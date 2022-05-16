@@ -422,10 +422,10 @@ progress{
                             @csrf
                         </form>
                       </li>
-                        <a class="dropdown-item" href="{{route ('/showEditAccount') }}" onclick="event.preventDefault(); document.getElementById('showEditAccount-form').submit();" {{ __('Logout') }}>
+                        <a class="dropdown-item" href="{{route ('showEditAccount') }}" onclick="event.preventDefault(); document.getElementById('showEditAccount-form').submit();" {{ __('Logout') }}>
                             show
                         </a>
-                        <form id="showEditAccount-form" action="{{ route('/showEditAccount') }}" method="POST" class="d-none">
+                        <form id="showEditAccount-form" action="{{ route('showEditAccount') }}" method="POST" class="d-none">
                             @csrf
                         </form>
 
