@@ -6,7 +6,7 @@
         <div class="col">
             <form action="showAddSensor" method="post" >
                 @csrf
-            <button name="AddSensorButton" type="submit" style="float: right; margin-right: 111px">Sensor Toevoegen</button>
+            <button name="AddSensorButton" type="submit" style="float: right; margin-right: 111px">Add sensor</button>
        </form>
         </div>
     </div>
@@ -148,7 +148,7 @@
                         <td>
                             <form action="showEditSensor" method="post">
                                 @csrf
-                                <button name="EditSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>"> Aanpassen </button>
+                                <button name="EditSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>"> Change </button>
                             </form>
                         </td>
                     </tr>
