@@ -131,6 +131,9 @@ table.responsiveTable{
     margin-left: 15px;
 }
 
+tbody tr td{
+    padding-right: 5px;
+}
 .optionGroup{
     font-weight: bold;
 }
