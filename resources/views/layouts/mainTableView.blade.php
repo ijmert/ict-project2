@@ -27,7 +27,7 @@
                     </tr>
                     <tr style="height: 350px">
                         <td style="width: 150px">
-                            <?php if($data['sensorData'][$counter]['type'] == "digitaal"){ ?>
+                            <?php if($data['sensorData'][$counter]['type'] == "digital"){ ?>
                                 <div class="container">
                                         <div class="de">
                                             <div class="den">
@@ -45,6 +45,18 @@
                             <?php  } ?>
                             <?php if($data['sensorData'][$counter]['type'] == "chart"){ ?>
                             <?php $percent = $data['value'][$counter] /( $data['sensorData'][$counter]['max'] - $data['sensorData'][$counter]['min'] )*100 ?>
+                            <?php if($percent <= 25){ ?>
+                                <?php $color = "red" ?>
+                            <?php } ?>
+                            <?php  if(25 < $percent && $percent <= 50){ ?>
+                                <?php $color = "orange" ?>
+                            <?php } ?>
+                            <?php if(50 < $percent && $percent <= 75){ ?>
+                                <?php $color = "Yellow" ?>
+                            <?php } ?>
+                            <?php if(75 < $percent ){ ?>
+                                <?php $color = "green" ?>
+                            <?php } ?>
                             <?php echo $data['value'][$counter] ?> <?php echo $data['sensorData'][$counter]['unit'] ?>
                                 <table class="graph">
                                     <thead>
@@ -53,7 +65,7 @@
                                                     <th scope="col"></th>
                                             </tr>
                                     </thead><tbody>
-                                            <tr style="height:<?php echo $percent ?>%">
+                                            <tr style="height:<?php echo $percent ?>%; background:<?php echo $color ?>; border-radius:0.5em 0.5em 0 0;"">
                                                     <td><span><?php echo $data['value'][$counter] ?><?php echo $data['sensorData'][$counter]['unit'] ?></span></td>
                                             </tr>
                                     </tbody>
@@ -62,6 +74,18 @@
 
                             <?php if($data['sensorData'][$counter]['type'] == "circle chart"){ ?>
                             <?php $percent = $data['value'][$counter] /( $data['sensorData'][$counter]['max'] - $data['sensorData'][$counter]['min'] )*100 ?>
+                            <?php if($percent <= 25){ ?>
+                                <?php $color = "red" ?>
+                            <?php } ?>
+                            <?php  if(25 < $percent && $percent <= 50){ ?>
+                                <?php $color = "orange" ?>
+                            <?php } ?>
+                            <?php if(50 < $percent && $percent <= 75){ ?>
+                                <?php $color = "Yellow" ?>
+                            <?php } ?>
+                            <?php if(75 < $percent ){ ?>
+                                <?php $color = "green" ?>
+                            <?php } ?>
                                 <div class="single-chart">
                                     <svg viewBox="0 0 36 36" class="circular-chart">
                                       <path class="circle-bg"
@@ -69,7 +93,7 @@
                                           a 15.9155 15.9155 0 0 1 0 31.831
                                           a 15.9155 15.9155 0 0 1 0 -31.831"
                                       />
-                                      <path class="circle" style="stroke: green"
+                                      <path class="circle" style="stroke: <?php echo $color ?>"
                                         stroke-dasharray="<?php echo $percent ?>, 100"
                                         d="M18 2.0845
                                           a 15.9155 15.9155 0 0 1 0 31.831
