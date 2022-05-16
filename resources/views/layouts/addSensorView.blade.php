@@ -7,7 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<label class="labelTest">Sensor toevoegen</label>
+<label class="labelTest">Add sensor</label>
 <div class="containerTable">
 <form action="{{ url('addSensor') }}" method="post" class="SensorForm" action="/action_page.php">
 {{ csrf_field() }}
@@ -24,7 +24,7 @@
             </td>
         </tr>
         <tr>
-            <td>Maximum</td>
+            <td>Max</td>
             <td><input class="InputBox" type="text" name="max"></td>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
             </td>
         </tr>
         <tr>
-            <td>Minimum</td>
+            <td>Min</td>
             <td><input class="InputBox" type="text" name="min"></td>
         </tr>
         <tr>
@@ -46,7 +46,7 @@
             </td>
         </tr>
         <tr>
-            <td>Eenheid</td>
+            <td>Unit</td>
             <td><input class="InputBox" type="text" name="unit"></td>
         </tr>
         <tr>
@@ -57,7 +57,7 @@
             </td>
         </tr>
         <tr>
-            <td>Type meter</td>
+            <td>Type</td>
             <td> <select class="SelectBox" name="type">
                 <option>chart</option>
                 <option>digitaal</option>
@@ -67,8 +67,8 @@
             </td>
         </tr>
     </table>
-    <button name="AnnuleerButton" type="submit" value="">Annuleren</button>
-    <button name="AddButton" type="submit">Voeg toe</button>
+    <button name="AnnuleerButton" type="submit" value="">Cancel</button>
+    <button name="AddButton" type="submit">Add</button>
 </form>
 </div>
 @endsection
