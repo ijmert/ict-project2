@@ -4,7 +4,7 @@
 
 
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<label class="labelTest">Account aanpassen</label>
+<label class="labelTest">Edit account</label>
 <div class="containerTable">
 <form action="{{ url('editAccount') }}" method="POST" class="SensorFrom">
 {{ csrf_field() }}
