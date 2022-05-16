@@ -133,7 +133,7 @@
         </div>
         -->
         <div>
-            <h1 id="HomePageTitle">Sensor Monitoring Tool</h1>
+            <h1 date-text="Sensor Monitoring Tool" id="HomePageTitle">Sensor Monitoring Tool</h1>
         </div>
     </body>
 </html>
