@@ -36,6 +36,13 @@ class sensor_last_measurementsTableSeeder extends Seeder
      ]);
      
      DB::table('sensor_last_measurements')->insert([
+     'LastMeasurement' => '35',
+     'topic' => 'maarten',
+     'created_at' => NULL,
+     'updated_at' => NULL,
+     ]);
+     
+     DB::table('sensor_last_measurements')->insert([
      'LastMeasurement' => '5',
      'topic' => 'iets',
      'created_at' => NULL,
