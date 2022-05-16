@@ -92,19 +92,13 @@ class EditAccountController extends Controller{
                 $id = auth()->user()->id;
 
                 DB::table('users')->where('id', $id)->delete();
-
+                
                 return view("welcome");
             }
             else
             {
                 echo "<script>alert('wachtwoord is fout!');</script>";
-                $id = auth()->user()->id;
-                $userData = User::where('id', $id)->first();
-                $userData['firstName'] = explode(' ', $userData['name'])[0];
-                $userData['lastName'] = explode(' ', $userData['name'])[1];
-
-                $initials = $this->getInitials();
-                return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
+                return $this->mainSiteConfig();
             }
            
 
@@ -140,14 +134,7 @@ class EditAccountController extends Controller{
                     }
                     else{
                         echo "<script>alert('nieuw wachtwoord is niet gelijk aan elkaar!');</script>";
-                        
-                        $id = auth()->user()->id;
-                        $userData = User::where('id', $id)->first();
-                        $userData['firstName'] = explode(' ', $userData['name'])[0];
-                        $userData['lastName'] = explode(' ', $userData['name'])[1];
-
-                        $initials = $this->getInitials();
-                        return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
+                        return $this->mainSiteConfig();
                     }
                     
                 }else{
@@ -158,17 +145,9 @@ class EditAccountController extends Controller{
                 $data = $this->siteConfig();
                 $initials = $this->getInitials();
                 return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
-
-
             }else{
                 echo "<script>alert('wachtwoord is fout!');</script>";
-                $id = auth()->user()->id;
-                $userData = User::where('id', $id)->first();
-                $userData['firstName'] = explode(' ', $userData['name'])[0];
-                $userData['lastName'] = explode(' ', $userData['name'])[1];
-
-                $initials = $this->getInitials();
-                return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
+                return $this->mainSiteConfig();
             }
 
         }
@@ -188,14 +167,7 @@ class EditAccountController extends Controller{
    //     return 30.1;
     }
 
-    public function BackToThisPage()
-    {
-        $id = auth()->user()->id;
-        $userData = User::where('id', $id)->first();
-        $userData['firstName'] = explode(' ', $userData['name'])[0];
-        $userData['lastName'] = explode(' ', $userData['name'])[1];
-
-        $initials = $this->getInitials();
-        return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
-    }
+    
+    
+    
 }
