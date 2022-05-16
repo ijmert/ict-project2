@@ -106,18 +106,16 @@ table.responsiveTable{
 
 #HomePage{
     background-color: white;
-    
 }
 
 #HomePageTitle{
     background-color: red;
-    font-size: 350%;
-    font-family: Trebuchet MS, sans-serif;
     padding: 20px;
+    font-size: 5vw;
 }
 
 .text-sm{
-    font-size: 150%
+    font-size: 200%
 }
 .text-sm:hover{
     color: red;
@@ -129,6 +127,10 @@ table.responsiveTable{
 .SelectBox{
     margin-bottom: 5px;
     margin-left: 15px;
+}
+
+.optionGroup{
+    font-weight: bold;
 }
 
  .containerTable{
@@ -300,8 +302,6 @@ body { background: #f2f2f2; }
 
 		.graph td {
 			height:100%;
-			background:#F63;
-			border-radius:0.5em 0.5em 0 0;
 			transition:background 0.5s;
 		}
 

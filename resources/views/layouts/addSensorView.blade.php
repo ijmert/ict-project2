@@ -14,7 +14,12 @@
     <table>
         <tr>
             <td>Topic</td>
-            <td><input class="InputBox" type="text" name="topic"></td>
+            <td><select class="SelectBox" name="topic" >
+                <option class="optionGroup" selected disabled>Choose topic</option>
+                <?php foreach ($topics as $topic) { ?>
+                  <option > <?php echo $topic['topic']; ?> </option>
+                <?php } ?>
+            </select></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -59,9 +64,10 @@
         <tr>
             <td>Type</td>
             <td> <select class="SelectBox" name="type">
+                <option class="optionGroup" selected disabled>Choose chart</option>
                 <option>chart</option>
                 <option>digitaal</option>
-                <option>CO2</option>
+                <option>circle chart</option>
                 <option>thermometer</option>
                 </select>
             </td>
