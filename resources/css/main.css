@@ -45,6 +45,7 @@ input{
     margin: 5px;
     padding: 5px;
     border: 2px solid black;
+    margin-bottom: 10px; 
 }
 
 label{
@@ -69,7 +70,7 @@ label{
 
 select{
     width: 177px;
-    margin: 5px;
+    margin: 15px;
     border-radius: 15px;
     padding: 5px;
     border: 2px solid black;
@@ -97,7 +98,36 @@ table.responsiveTable{
 
 #dropdownMenuButton1{
     border: 0px solid red;
-    margin-top: 15px;
+    margin-top: 18px;
     padding: 6px;
     box-shadow: none;
+    margin-left: 10px;
+}
+
+#HomePage{
+    background-color: white;
+    
+}
+
+#HomePageTitle{
+    background-color: red;
+    font-size: 350%;
+    font-family: Trebuchet MS, sans-serif;
+    padding: 20px;
+}
+
+.text-sm{
+    font-size: 150%
+}
+.text-sm:hover{
+    color: red;
+}
+
+.InputBox{
+    margin-bottom: 5px;
+}
+.SelectBox{
+    margin-bottom: 5px;
+    width: 195px;
+    height: 38px;
 }
