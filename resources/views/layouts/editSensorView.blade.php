@@ -67,8 +67,8 @@
             </select> </td>
         </tr>
     </table>
-    <button name="AnnuleerBtn" type="submit" value="">Cancel</button>
-    <button name="EditButon" type="submit"  value="<?php echo $sensorData['id'] ?>">Save</button>
+    <button class="Knop" name="AnnuleerBtn" type="submit" value="">Cancel</button>
+    <button class="Knop" name="EditButon" type="submit"  value="<?php echo $sensorData['id'] ?>">Save</button>
 </form>
 </div>
 

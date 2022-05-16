@@ -11,6 +11,7 @@ use \App\Models\editAccount;
 use \App\Http\Requests\EditAccountRequest;
 use Illuminate\Http\Request;
 use App\Models\sensor;
+use App\Http\Controllers\Auth;
 Use App\Models\Sensor_last_measurement;
 use DB;
 use App\Models\User;
@@ -94,6 +95,8 @@ class EditAccountController extends Controller{
                 DB::table('users')->where('id', $id)->delete();
                 
                 return view("welcome");
+                
+                Auth::logout();
             }
             else
             {
@@ -106,10 +109,10 @@ class EditAccountController extends Controller{
         else
         {
             $validatedData = $request->validate([
-                'firstName' => 'required',
-                'lastName' => 'required',
-                'email' => 'required|email',
-                'oldpass' => 'required',
+                'firstname' => ['required', 'string', 'max:255'],
+                'lastname' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'oldpass' => ['required', 'string', 'min:8']
             ]);
             $id = auth()->user()->id;
             $firstName = request()->input('firstName');
@@ -127,6 +130,10 @@ class EditAccountController extends Controller{
             if(Hash:: check ($oldpass, $userInfo['password'])){
 
                 if($password != ""){
+                    $request->validate([
+                        'password' => ['min:8'],
+                        'confPassword' => ['min:8'],
+                    ]);
                     if ($password == $confPassword){
                         DB::table('users')
                             ->where ('id', $id)
@@ -145,6 +152,8 @@ class EditAccountController extends Controller{
                 $data = $this->siteConfig();
                 $initials = $this->getInitials();
                 return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
+
+
             }else{
                 echo "<script>alert('wachtwoord is fout!');</script>";
                 return $this->mainSiteConfig();

@@ -32,7 +32,7 @@ h1 {
     margin-top: -60px;
 }
 
-button{
+.Knop{
     border-radius: 15px;
     border: 1px solid gray;
     padding: 5px;
@@ -131,6 +131,9 @@ table.responsiveTable{
     margin-left: 15px;
 }
 
+tbody tr td{
+    padding-right: 5px;
+}
 .optionGroup{
     font-weight: bold;
 }
