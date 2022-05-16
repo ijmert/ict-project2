@@ -154,7 +154,7 @@
                         <td>
                             <form action="showEditSensor" method="post">
                                 @csrf
-                                <button class="knop" name="EditSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>"> Change </button>
+                                <button class="Knop" name="EditSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>"> Change </button>
                             </form>
                         </td>
                     </tr>
