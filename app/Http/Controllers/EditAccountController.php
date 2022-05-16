@@ -11,6 +11,7 @@ use \App\Models\editAccount;
 use \App\Http\Requests\EditAccountRequest;
 use Illuminate\Http\Request;
 use App\Models\sensor;
+Use App\Models\Sensor_last_measurement;
 use DB;
 use App\Models\User;
 /**
@@ -19,27 +20,27 @@ use App\Models\User;
  * @author robbe
  */
 class EditAccountController extends Controller{
-    
 
-    
+
+
 
     public function __construct(editAccount $editAccount)
     {
         $this->middleware('auth');
         $this->editAccount = $editAccount;
-        
-         
+
+
     }
-    
-    public function siteConfig() {  
+
+    public function siteConfig() {
         $id = auth()->user()->id;
-        
-        
+
+
         $SensorData = sensor::where('users_id', $id)->get();
         $data['sensorData'] = $SensorData;
         for($i=0; $i<count($SensorData);$i++){
            $data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
-        }  
+        }
         $name = User::where('id', $id)->get();
         $preName = explode(' ', $name[0]['name'])[0];
         $postName = explode(' ', $name[0]['name'])[1];
@@ -47,41 +48,41 @@ class EditAccountController extends Controller{
         $data['initials'] .= substr($postName, 0, 1);
         return $data;
     }
-    
-    
+
+
     public function mainSiteConfig(){
-       
-        
-        
+
+
+
         $id = auth()->user()->id;
         $userData = User::where('id', $id)->first();
-        
+
         //nog password decrypten
         //$userData['password'] = $userData['password'];
         $userData['firstName'] = explode(' ', $userData['name'])[0];
         $userData['lastName'] = explode(' ', $userData['name'])[1];
-        
+
         return view("layouts/editAccount", ['userData' => $userData]);
-        
+
     }
-    
+
     public function EditAccount(Request $request)
     {
         if (isset($_POST['AnnuleerBtn']))
         {
             $sensorData = $this->siteConfig();
-            
+
             //$id = auth()->user()->id;
             return view("layouts/mainTableView", ['data' => $sensorData]);
         }
         else if (isset($_POST['deleteSensorButton']))
         {
            $id = auth()->user()->id;
-            
+
             DB::table('users')->where('id', $id)->delete();
 
             return view("welcome");
-            
+
         }
         else
         {
@@ -98,13 +99,13 @@ class EditAccountController extends Controller{
             $password = request()->input('password');
             $oldpass= request()->input('oldpass');
             $userInfo = User::where('id', $id)->first();
-            
+
             $name = trim($firstName);
             $name .= " ";
             $name .= trim($lastName);
-            
+
             if(Hash:: check ($oldpass, $userInfo['password'])){
-                
+
                 if($password != ""){
                     DB::table('users')
                         ->where ('id', $id)
@@ -114,26 +115,40 @@ class EditAccountController extends Controller{
                         ->where ('id', $id)
                         ->update(['name' => $name, 'email' => $email]);
                 }
-                $sensorData = $this->siteConfig();    
+                $sensorData = $this->siteConfig();
                 return view("layouts/mainTableView", ['data' => $sensorData]);
-                
-                
+
+
             }else{
                 echo "<script>alert('wachtwoord is fout!');</script>";
                 $id = auth()->user()->id;
                 $userData = User::where('id', $id)->first();
                 $userData['firstName'] = explode(' ', $userData['name'])[0];
                 $userData['lastName'] = explode(' ', $userData['name'])[1];
-                
+
                 return view("layouts/editAccount", ['userData' => $userData]);
             }
-            
-            
-            
-            
-            
+
+
+
+
+
         }
     }
-    
-    
+    public function getLastValue($topic){
+
+        $var = Sensor_last_measurement::where('topic', $topic)->get();
+
+        if (isset($var[0])) {
+        return $var[0]['LastMeasurement'];
+        }
+        else{
+            return null;
+        }
+
+
+   //     return 30.1;
+    }
+
+
 }
