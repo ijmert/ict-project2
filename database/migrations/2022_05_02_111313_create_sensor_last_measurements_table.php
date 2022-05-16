@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('sensor_last_measurements', function (Blueprint $table) {
             $table->integer('LastMeasurement');
-            $table->string('topic');
-            $table->foreign('topic')->references('topic')->on('sensors');
+            $table->string('topic') -> unique();
             $table->timestamps();
-            $table->primary('topic');
         });
     }
 

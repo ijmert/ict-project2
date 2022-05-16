@@ -410,7 +410,7 @@ progress{
             <span  class="dot">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: red;">
-                      MV
+                        @yield('initials')
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li>
@@ -422,7 +422,17 @@ progress{
                             @csrf
                         </form>
                       </li>
-                        
+                        <a class="dropdown-item" href="{{route ('showEditAccount') }}" onclick="event.preventDefault(); document.getElementById('showEditAccount-form').submit();" {{ __('Logout') }}>
+                            Edit account
+                        </a>
+                        <form id="showEditAccount-form" action="{{ route('showEditAccount') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
+                          <!--   <a class="dropdown-item"> <form action="showEditAccount" method="POST" >
+
+                                      <button type="submit" style="background-color: white; color: black;; border: none">edit account</button>
+                          </form></a>-->
                         </li>
 
                     </ul>
