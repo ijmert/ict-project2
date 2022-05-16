@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sensor_last_measurements', function (Blueprint $table) {
-            $table->integer('LastMeasurement');
+            $table->float('LastMeasurement');
             $table->string('topic') -> unique();
             $table->timestamps();
         });

@@ -84,11 +84,23 @@ class EditAccountController extends Controller{
         }
         else if (isset($_POST['deleteSensorButton']))
         {
-           $id = auth()->user()->id;
+            $id = auth()->user()->id;
+            $userInfo = User::where('id', $id)->first();
+            $oldpass = request()->input('oldpass');
+            if(Hash:: check ($oldpass, $userInfo['password']))
+            {
+                $id = auth()->user()->id;
 
-            DB::table('users')->where('id', $id)->delete();
-
-            return view("welcome");
+                DB::table('users')->where('id', $id)->delete();
+                
+                return view("welcome");
+            }
+            else
+            {
+                echo "<script>alert('wachtwoord is fout!');</script>";
+                return $this->mainSiteConfig();
+            }
+           
 
         }
         else
@@ -104,9 +116,10 @@ class EditAccountController extends Controller{
             $lastName = request()->input('lastName');
             $email = request()->input('email');
             $password = request()->input('password');
-            $oldpass= request()->input('oldpass');
+            $oldpass = request()->input('oldpass');
+            $confPassword = request()->input('confPassword');
             $userInfo = User::where('id', $id)->first();
-
+            
             $name = trim($firstName);
             $name .= " ";
             $name .= trim($lastName);
@@ -114,9 +127,16 @@ class EditAccountController extends Controller{
             if(Hash:: check ($oldpass, $userInfo['password'])){
 
                 if($password != ""){
-                    DB::table('users')
-                        ->where ('id', $id)
-                        ->update(['name' => $name, 'email' => $email,'password' => Hash::make($password)]);
+                    if ($password == $confPassword){
+                        DB::table('users')
+                            ->where ('id', $id)
+                            ->update(['name' => $name, 'email' => $email,'password' => Hash::make($password)]);
+                    }
+                    else{
+                        echo "<script>alert('nieuw wachtwoord is niet gelijk aan elkaar!');</script>";
+                        return $this->mainSiteConfig();
+                    }
+                    
                 }else{
                     DB::table('users')
                         ->where ('id', $id)
@@ -125,17 +145,9 @@ class EditAccountController extends Controller{
                 $data = $this->siteConfig();
                 $initials = $this->getInitials();
                 return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
-
-
             }else{
                 echo "<script>alert('wachtwoord is fout!');</script>";
-                $id = auth()->user()->id;
-                $userData = User::where('id', $id)->first();
-                $userData['firstName'] = explode(' ', $userData['name'])[0];
-                $userData['lastName'] = explode(' ', $userData['name'])[1];
-
-                $initials = $this->getInitials();
-                return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
+                return $this->mainSiteConfig();
             }
 
         }
@@ -155,5 +167,7 @@ class EditAccountController extends Controller{
    //     return 30.1;
     }
 
-
+    
+    
+    
 }
