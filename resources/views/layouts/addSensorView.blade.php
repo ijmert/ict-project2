@@ -73,8 +73,8 @@
             </td>
         </tr>
     </table>
-    <button name="AnnuleerButton" type="submit" value="">Cancel</button>
-    <button name="AddButton" type="submit">Add</button>
+    <button class="Knop" name="AnnuleerButton" type="submit" value="">Cancel</button>
+    <button class="Knop" name="AddButton" type="submit">Add</button>
 </form>
 </div>
 @endsection
