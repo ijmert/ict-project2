@@ -6,7 +6,7 @@
         <div class="col">
             <form action="showAddSensor" method="post" >
                 @csrf
-            <button name="AddSensorButton" type="submit" style="float: right; margin-right: 111px">Add sensor</button>
+            <button class="Knop" name="AddSensorButton" type="submit" style="float: right; margin-right: 111px">Add sensor</button>
        </form>
         </div>
     </div>
@@ -21,7 +21,7 @@
                         <td>
                             <form action="deleteSensor" method="post">
                                 @csrf
-                                <button name="deleteSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>">x</button>
+                                <button class="Knop" name="deleteSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>">x</button>
                              </form>
                         </td>
                     </tr>
@@ -45,6 +45,12 @@
                             <?php  } ?>
                             <?php if($data['sensorData'][$counter]['type'] == "chart"){ ?>
                             <?php $percent = $data['value'][$counter] /( $data['sensorData'][$counter]['max'] - $data['sensorData'][$counter]['min'] )*100 ?>
+                         <?php   if ($percent > 100) { ?>
+                            <?php    $percent = 100 ?>
+                        <?php } ?>
+                        <?php    if ($percent < 0) { ?>
+                        <?php        $percent =0 ?>
+                        <?php    }                            ?>
                             <?php if($percent <= 25){ ?>
                                 <?php $color = "red" ?>
                             <?php } ?>
@@ -148,7 +154,7 @@
                         <td>
                             <form action="showEditSensor" method="post">
                                 @csrf
-                                <button name="EditSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>"> Change </button>
+                                <button class="knop" name="EditSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>"> Change </button>
                             </form>
                         </td>
                     </tr>
