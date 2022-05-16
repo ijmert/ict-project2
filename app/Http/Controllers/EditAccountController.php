@@ -48,21 +48,29 @@ class EditAccountController extends Controller{
         $data['initials'] .= substr($postName, 0, 1);
         return $data;
     }
+    public function getInitials(){
+        $id = auth()->user()->id;
+        $name = User::where('id', $id)->get();
+        $preName = explode(' ', $name[0]['name'])[0];
+        $postName = explode(' ', $name[0]['name'])[1];
+        $initials = substr($preName, 0, 1);
+        $initials .= substr($postName, 0, 1);
+        return $initials;
+    }
 
 
     public function mainSiteConfig(){
 
 
-
         $id = auth()->user()->id;
         $userData = User::where('id', $id)->first();
-
+        $initials = $this->getInitials();
         //nog password decrypten
         //$userData['password'] = $userData['password'];
         $userData['firstName'] = explode(' ', $userData['name'])[0];
         $userData['lastName'] = explode(' ', $userData['name'])[1];
 
-        return view("layouts/editAccount", ['userData' => $userData]);
+        return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
 
     }
 
@@ -70,10 +78,9 @@ class EditAccountController extends Controller{
     {
         if (isset($_POST['AnnuleerBtn']))
         {
-            $sensorData = $this->siteConfig();
-
-            //$id = auth()->user()->id;
-            return view("layouts/mainTableView", ['data' => $sensorData]);
+            $data = $this->siteConfig();
+            $initials = $this->getInitials();
+            return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
         }
         else if (isset($_POST['deleteSensorButton']))
         {
@@ -115,8 +122,9 @@ class EditAccountController extends Controller{
                         ->where ('id', $id)
                         ->update(['name' => $name, 'email' => $email]);
                 }
-                $sensorData = $this->siteConfig();
-                return view("layouts/mainTableView", ['data' => $sensorData]);
+                $data = $this->siteConfig();
+                $initials = $this->getInitials();
+                return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
 
 
             }else{
@@ -126,12 +134,9 @@ class EditAccountController extends Controller{
                 $userData['firstName'] = explode(' ', $userData['name'])[0];
                 $userData['lastName'] = explode(' ', $userData['name'])[1];
 
-                return view("layouts/editAccount", ['userData' => $userData]);
+                $initials = $this->getInitials();
+                return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
             }
-
-
-
-
 
         }
     }

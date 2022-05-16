@@ -138,5 +138,5 @@
 @endsection
 
 @section('initials')
-<?php echo $data['initials'] ?>
+<?php echo $initials ?>
 @endsection
