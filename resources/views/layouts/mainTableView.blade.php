@@ -136,3 +136,7 @@
     </div>
 </div>
 @endsection
+
+@section('initials')
+<?php echo $initials ?>
+@endsection

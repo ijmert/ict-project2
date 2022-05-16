@@ -4,14 +4,14 @@
 
 
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<label class="labelTest">Sensor aanpassen</label>
+<label class="labelTest">Edit account</label>
 <div class="containerTable">
 <form action="{{ url('editAccount') }}" method="POST" class="SensorFrom">
 {{ csrf_field() }}
-    
+
     <table>
         <tr>
-            <td>voornaam</td>
+            <td>Firstname</td>
             <td><input type="text" name="firstName" value=" {{$userData['firstName'] }} " >         </td>
         </tr>
         <tr>
@@ -21,7 +21,7 @@
                 @endif
             </td>
         </tr>
-        <td>achternaam</td>
+        <td>Lastname</td>
             <td><input type="text" name="lastName" value=" {{$userData['lastName'] }} " >         </td>
         </tr>
         <tr>
@@ -45,7 +45,7 @@
         <tr>
             <td>old password</td>
             <td><input type="password" name="oldpass""></td>
-            
+
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -54,7 +54,7 @@
                 @endif
             </td>
         </tr>
-        
+
         <tr>
             <td>new password</td>
             <td><input type="password" name="password" ></td>
@@ -66,12 +66,15 @@
                 @endif
             </td>
         </tr>
-        
+
     </table>
-    <button name="AnnuleerBtn" type="submit" value="">Annuleren</button>
-    <button name="EditButon" type="submit">Pas aan</button>
+    <button name="AnnuleerBtn" type="submit" value="">Cancel</button>
+    <button name="EditButon" type="submit">Save edit </button>
     <button name="deleteSensorButton" type="submit">Delete account</button>
 </form>
 </div>
 
+@endsection
+@section('initials')
+<?php echo $initials ?>
 @endsection

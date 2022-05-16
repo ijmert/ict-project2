@@ -27,19 +27,24 @@ class SensorController extends Controller
            $data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
         }
         // $data['value'] = 10;
+
+        //$data['sensor'] = $SensorData;
+        return $data;
+    }
+    public function getInitials(){
+        $id = auth()->user()->id;
         $name = User::where('id', $id)->get();
         $preName = explode(' ', $name[0]['name'])[0];
         $postName = explode(' ', $name[0]['name'])[1];
-        $data['initials'] = substr($preName, 0, 1);
-        $data['initials'] .= substr($postName, 0, 1);
-        //$data['sensor'] = $SensorData;
-        return $data;
+        $initials = substr($preName, 0, 1);
+        $initials .= substr($postName, 0, 1);
+        return $initials;
     }
 
     public function mainSiteConfig(){
         $data = $this->siteConfig();
-        $id = auth()->user()->id;
-        return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
+        $initials = $this->getInitials();
+        return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
     }
 
                     ////Sensor Aanpassen////
@@ -50,14 +55,14 @@ class SensorController extends Controller
             $id= $request->input('EditSensorButton');
             //data opzoeken van deze ID
             $sensorData = sensor::where('id', $id)->first();
-
-            return view("layouts/editSensorView", ['sensorData'=>$sensorData]);
+            $initials = $this->getInitials();
+            return view("layouts/editSensorView", ['sensorData'=>$sensorData], ['initials'=>$initials]);
         }
         else
         {
-            $id = 8;
-            $sensorData = sensor::where('id', $id)->first();
-            return view("layouts/editSensorView", ['sensorData'=>$sensorData]);
+            $data = $this->siteConfig();
+            $initials = $this->getInitials();
+            return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
         }
     }
 
@@ -84,24 +89,23 @@ class SensorController extends Controller
                        ->where('id', $id)
                        ->update(['topic' => $topic, 'type' => $type, 'unit' => $unit, 'min'=>$min, 'max'=>$max ]);
 
-           $SensorData = $this->siteConfig();
-           $id = auth()->user()->id;
-
-           return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
+                       $data = $this->siteConfig();
+                       $initials = $this->getInitials();
+                       return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
         }
         else
         {
             $data = $this->siteConfig();
-            $id = auth()->user()->id;
-            return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
+        $initials = $this->getInitials();
+        return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
         }
     }
 
                 ////Sensor Toevoegen////
 
     public function showAddSensor(){
-
-        return view("layouts/addSensorView");
+        $initials = $this->getInitials();
+        return view("layouts/addSensorView", ['initials'=>$initials]);
 
     }
 
@@ -109,8 +113,8 @@ class SensorController extends Controller
         if (isset($_POST['AnnuleerButton']))
         {
             $data = $this->siteConfig();
-            $id = auth()->user()->id;
-            return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$id] );
+        $initials = $this->getInitials();
+        return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
         }
 
         $validatedData = $request->validate
@@ -131,10 +135,9 @@ class SensorController extends Controller
         $data=array("topic"=>$topic,"type"=>$type,"unit"=>$unit,"min"=>$min,"max"=>$max, "users_id"=>$user_id);
         DB::table('sensors')->insert($data);
 
-        $SensorData = $this->siteConfig();
-        $id = auth()->user()->id;
-
-        return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
+        $data = $this->siteConfig();
+        $initials = $this->getInitials();
+        return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
     }
 
                 ////Sensor Verwijderen////
@@ -143,9 +146,9 @@ class SensorController extends Controller
         $id = $request->input('deleteSensorButton');
         DB::table('sensors')->where('id', $id)->delete();
 
-        $SensorData = $this->siteConfig();
-        $id = auth()->user()->id;
-        return view("layouts/mainTableView" , ['data'=>$SensorData], ['initials'=>$id] );
+        $data = $this->siteConfig();
+        $initials = $this->getInitials();
+        return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
     }
 
     public function getLastValue($topic){
