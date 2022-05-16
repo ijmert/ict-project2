@@ -161,9 +161,11 @@ class SensorController extends Controller
         else{
             return null;
         }
+    }
 
-
-   //     return 30.1;
+    public function getAllTopics(){
+        $topics = Sensor_last_measurement::all();
+        return view("layouts/test" , ['data'=>$topics]);
     }
 
 }
