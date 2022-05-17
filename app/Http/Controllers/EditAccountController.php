@@ -110,12 +110,12 @@ class EditAccountController extends Controller{
         }
         else if (isset($_POST['EditButon']))
         {
-            $validatedData = $request->validate([
+            /*$validatedData = $request->validate([
                 'firstname' => ['required',  'max:255'],
                 'lastname' => ['required',  'max:255'],
                 'email' => ['required', 'email', 'max:255'],
                 'oldpass' => ['required', 'min:8']
-            ]);
+            ]);*/
             $id = auth()->user()->id;
             $firstName = request()->input('firstName');
             $lastName = request()->input('lastName');
