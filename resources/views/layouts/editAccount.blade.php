@@ -79,9 +79,9 @@
         </tr>
 
     </table>
-    <button name="AnnuleerBtn" type="submit" value="">Cancel</button>
-    <button name="EditButon" type="submit">Save edit </button>
-    <button name="deleteSensorButton" type="submit">Delete account</button>
+    <button class="Knop" name="AnnuleerBtn" type="submit" value="">Cancel</button>
+    <button class="Knop" name="EditButon" type="submit">Save edit </button>
+    <button class="Knop" name="deleteSensorButton" type="submit">Delete account</button>
 </form>
 </div>
 
