@@ -149,10 +149,12 @@
                               </div>
                             <?php  } ?>
 
-                            <?php if($data['sensorData'][$counter]['type'] == "test"){ ?>
+                            <?php if($data['sensorData'][$counter]['type'] == "gauge"){ ?>
                                 <?php $interval = $data['sensorData'][$counter]['max']- $data['sensorData'][$counter]['min']; ?>
-                                <?php $stepsLabel = $interval/8; $stepsMeter = 96/$interval;  ?>
+                                <?php $percent = $data['value'][$counter] / $interval  ?>
                                 <?php $value =( $data['value'][$counter] - $data['sensorData'][$counter]['min']) * $stepsMeter; ?>
+                                <?php echo $percent ?>
+
                                 <div class="single-chart-half">
                                     <svg viewBox="0 0 36 36" class="circular-chart-half">
                                       <path class="circle-bg-half"
@@ -162,15 +164,19 @@
                                           a 15.9155 15.9155 0 0 1 0 -31.831"
                                       />
                                       <path class="circle-half"
-                                        stroke-dasharray="20, 100"
+                                        stroke-dasharray="0, 100"
                                         d="M18 2.0845
                                           a 15.9155 15.9155 0 0 1 0 31.831
                                           a 15.9155 15.9155 0 0 1 0 -31.831"
                                       />
-                                      <text x="3" y="-14" class="scale">0%</text>
-                                      <text x="33" y="-14" class="scale">100%</text>
-                                      <text x="18" y="-21" class="value">30 </text>
-                                      <text x="18" y="-19" class="unit">gradzen </text>
+                                      <text x="3" y="-14" class="scale"><?php echo $data['sensorData'][$counter]['min'] ?></text>
+                                      <text x="33" y="-14" class="scale"><?php echo $data['sensorData'][$counter]['max'] ?></text>
+                                      <text x="18" y="-21" class="value"><?php echo $data['value'][$counter] ?> </text>
+                                      <text x="18" y="-19" class="unit"><?php echo $data['sensorData'][$counter]['unit'] ?> </text>
+
+                                      <text x="26.9" y="-16" class="unit" style="transform: rotate(45deg)">|</text> <!--25-->
+                                      <text x="0" y="42.9" class="unit" style="transform: rotate(-45deg)">|</text> <!--75 -->
+                                      <text x="18" y="-34" class="unit" >|</text>                                   <!--50-->
                                     </svg>
                                   </div>
                               <?php  } ?>

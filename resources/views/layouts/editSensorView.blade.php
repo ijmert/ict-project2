@@ -61,9 +61,10 @@
             <td>Type</td>
             <td> <select class="SelectBox" name="type">
                 <option <?php if ($sensorData['type'] == 'chart'){ ?> selected <?php } ?> >chart</option>
-                <option <?php if ($sensorData['type'] == 'digital'){ ?> selected <?php } ?> >digitaal</option>
+                <option <?php if ($sensorData['type'] == 'digital'){ ?> selected <?php } ?> >digital</option>
                 <option <?php if ($sensorData['type'] == 'circle chart'){ ?> selected <?php } ?> >circle chart</option>
                 <option <?php if ($sensorData['type'] == 'thermometer'){ ?> selected <?php } ?> >thermometer</option>
+                <option <?php if ($sensorData['type'] == 'gauge'){ ?> selected <?php } ?> >gauge</option>
             </select> </td>
         </tr>
     </table>

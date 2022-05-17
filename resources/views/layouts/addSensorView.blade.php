@@ -66,9 +66,10 @@
             <td> <select class="SelectBox" name="type">
                 <option class="optionGroup" selected disabled>Choose chart</option>
                 <option>chart</option>
-                <option>digitaal</option>
+                <option>digital</option>
                 <option>circle chart</option>
                 <option>thermometer</option>
+                <option>gauge</option>
                 </select>
             </td>
         </tr>
