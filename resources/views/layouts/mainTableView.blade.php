@@ -148,13 +148,39 @@
                                 </div>
                               </div>
                             <?php  } ?>
+
+                            <?php if($data['sensorData'][$counter]['type'] == "test"){ ?>
+                                <?php $interval = $data['sensorData'][$counter]['max']- $data['sensorData'][$counter]['min']; ?>
+                                <?php $stepsLabel = $interval/8; $stepsMeter = 96/$interval;  ?>
+                                <?php $value =( $data['value'][$counter] - $data['sensorData'][$counter]['min']) * $stepsMeter; ?>
+                                <div class="single-chart-half">
+                                    <svg viewBox="0 0 36 36" class="circular-chart-half">
+                                      <path class="circle-bg-half"
+                                      stroke-dasharray="50, 100"
+                                        d="M18 2.0845
+                                          a 15.9155 15.9155 0 0 1 0 31.831
+                                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                      />
+                                      <path class="circle-half"
+                                        stroke-dasharray="20, 100"
+                                        d="M18 2.0845
+                                          a 15.9155 15.9155 0 0 1 0 31.831
+                                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                      />
+                                      <text x="3" y="-14" class="scale">0%</text>
+                                      <text x="33" y="-14" class="scale">100%</text>
+                                      <text x="18" y="-21" class="value">30 </text>
+                                      <text x="18" y="-19" class="unit">gradzen </text>
+                                    </svg>
+                                  </div>
+                              <?php  } ?>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <form action="showEditSensor" method="post">
                                 @csrf
-                                <button class="knop" name="EditSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>"> Change </button>
+                                <button class="Knop" name="EditSensorButton" type="submit" value="<?php echo $data['sensorData'][$counter]['id'] ?>"> Change </button>
                             </form>
                         </td>
                     </tr>

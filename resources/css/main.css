@@ -45,7 +45,7 @@ input{
     margin: 5px;
     padding: 5px;
     border: 2px solid black;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 label{
@@ -333,7 +333,7 @@ body { background: #f2f2f2; }
 			margin-left:-2em;
 			opacity:1;
 		}
-                
+
         /*circle cart */
         .flex-wrapper {
   display: flex;
@@ -529,3 +529,57 @@ progress{
 	width: 2em;
 	height: 2em;
 }
+
+
+.single-chart-half {
+    width: 33%;
+    justify-content: space-around ;
+  }
+
+  .circular-chart-half {
+  transform: rotate(-90deg);
+
+    display: block;
+    margin: 10px auto;
+    max-height: 250px;
+  }
+
+  .circle-bg-half {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+  }
+
+  .circle-half {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+    stroke: red;
+  }
+
+  .value {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 8px;
+    text-anchor: middle;
+
+    transform: rotate(90deg); /* IE 9 */
+  }
+  .scale {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 2px;
+    text-anchor: middle;
+
+    transform: rotate(90deg); /* IE 9 */
+  }
+  .unit {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 3px;
+    text-anchor: middle;
+
+    transform: rotate(90deg); /* IE 9 */
+  }
+

@@ -51,7 +51,8 @@ Route::post('/deleteSensor', [App\Http\Controllers\sensorController::class, 'del
 Route::get('/deleteSensor', [App\Http\Controllers\sensorController::class, 'deleteSensor']);
 
 
+Route::get('/test', [App\Http\Controllers\sensorController::class, 'test']);
 
 
-Route::get('/test', [App\Http\Controllers\sensorController::class, 'getAllTopics']);
+
 

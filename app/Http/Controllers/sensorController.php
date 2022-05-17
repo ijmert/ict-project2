@@ -171,4 +171,8 @@ class SensorController extends Controller
         //return view("layouts/test" , ['data'=>$topics]);
     }
 
+    public function test(){
+        return view("layouts.test");
+    }
+
 }
