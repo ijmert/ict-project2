@@ -61,20 +61,14 @@ class EditAccountController extends Controller{
         $id = auth()->user()->id;
         $userData = User::where('id', $id)->first();
         $initials = $this->getInitials();
-        //nog password decrypten
-        //$userData['password'] = $userData['password'];
+        $userData['firstName'] = explode(' ', $userData['name'])[0];
+        $userData['lastName'] = explode(' ', $userData['name'])[1];
+        
 
         return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
 
     }
 
-    public function messages()
-{
-    return [
-        'firstName.required' => 'A title is required',
-        'lastName.required' => 'A message is required',
-    ];
-}
     
     
     public function EditAccount(Request $request)

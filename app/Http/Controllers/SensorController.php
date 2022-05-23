@@ -165,7 +165,6 @@ class SensorController extends Controller
     public function getAllTopics(){
         $topics = Sensor_last_measurement::all();
         return $topics;
-        //return view("layouts/test" , ['data'=>$topics]);
     }
     public function getColor($percent){
         if($percent <25){
