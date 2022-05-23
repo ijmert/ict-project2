@@ -44,26 +44,6 @@
                                       </div>
                             <?php  } ?>
                             <?php if($data['sensorData'][$counter]['type'] == "chart"){ ?>
-                            <?php $percent = $data['value'][$counter] /( $data['sensorData'][$counter]['max'] - $data['sensorData'][$counter]['min'] )*100 ?>
-                         <?php   if ($percent > 100) { ?>
-                            <?php    $percent = 100 ?>
-                        <?php } ?>
-                        <?php    if ($percent < 0) { ?>
-                        <?php        $percent =0 ?>
-                        <?php    }                            ?>
-                            <?php if($percent <= 25){ ?>
-                                <?php $color = "red" ?>
-                            <?php } ?>
-                            <?php  if(25 < $percent && $percent <= 50){ ?>
-                                <?php $color = "orange" ?>
-                            <?php } ?>
-                            <?php if(50 < $percent && $percent <= 75){ ?>
-                                <?php $color = "Yellow" ?>
-                            <?php } ?>
-                            <?php if(75 < $percent ){ ?>
-                                <?php $color = "green" ?>
-                            <?php } ?>
-                            <?php echo $data['value'][$counter] ?> <?php echo $data['sensorData'][$counter]['unit'] ?>
                                 <table class="graph">
                                     <thead>
                                             <tr>
@@ -71,27 +51,14 @@
                                                     <th scope="col"></th>
                                             </tr>
                                     </thead><tbody>
-                                            <tr style="height:<?php echo $percent ?>%; background:<?php echo $color ?>; border-radius:0.5em 0.5em 0 0;"">
-                                                    <td><span><?php echo $data['value'][$counter] ?><?php echo $data['sensorData'][$counter]['unit'] ?></span></td>
+                                            <tr style="height:<?php echo $data['percent'][$counter] ?>%; background:<?php echo $data['color'][$counter] ?>; border-radius:0.5em 0.5em 0 0;">
+                                                    <td><span> <?php echo $data['percent'][$counter] ?><?php echo $data['sensorData'][$counter]['unit'] ?></span></td>
                                             </tr>
                                     </tbody>
                                 </table>
                             <?php  } ?>
 
                             <?php if($data['sensorData'][$counter]['type'] == "circle chart"){ ?>
-                            <?php $percent = $data['value'][$counter] /( $data['sensorData'][$counter]['max'] - $data['sensorData'][$counter]['min'] )*100 ?>
-                            <?php if($percent <= 25){ ?>
-                                <?php $color = "red" ?>
-                            <?php } ?>
-                            <?php  if(25 < $percent && $percent <= 50){ ?>
-                                <?php $color = "orange" ?>
-                            <?php } ?>
-                            <?php if(50 < $percent && $percent <= 75){ ?>
-                                <?php $color = "Yellow" ?>
-                            <?php } ?>
-                            <?php if(75 < $percent ){ ?>
-                                <?php $color = "green" ?>
-                            <?php } ?>
                                 <div class="single-chart">
                                     <svg viewBox="0 0 36 36" class="circular-chart">
                                       <path class="circle-bg"
@@ -99,8 +66,8 @@
                                           a 15.9155 15.9155 0 0 1 0 31.831
                                           a 15.9155 15.9155 0 0 1 0 -31.831"
                                       />
-                                      <path class="circle" style="stroke: <?php echo $color ?>"
-                                        stroke-dasharray="<?php echo $percent ?>, 100"
+                                      <path class="circle" style="stroke: <?php echo $data['color'][$counter] ?>"
+                                        stroke-dasharray="<?php echo $data['percent'][$counter] ?>, 100"
                                         d="M18 2.0845
                                           a 15.9155 15.9155 0 0 1 0 31.831
                                           a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -112,9 +79,7 @@
 
                             <?php if($data['sensorData'][$counter]['type'] == "thermometer"){ ?>
                               <?php $interval = $data['sensorData'][$counter]['max']- $data['sensorData'][$counter]['min']; ?>
-                              <?php $stepsLabel = $interval/8; $stepsMeter = 96/$interval;  ?>
-                              <?php $value =( $data['value'][$counter] - $data['sensorData'][$counter]['min']) * $stepsMeter; ?>
-
+                              <?php $stepsLabel = $interval/8; ?>
                               <div class="thermometerBody">
                                 <div class="thermometer">
                                   <div class="thermometer__inner">
@@ -129,7 +94,7 @@
                                       <div class="thermometer__label"><?php echo $data['sensorData'][$counter]['max']-$stepsLabel*6 ?></div>
                                       <div class="thermometer__label"><?php echo $data['sensorData'][$counter]['max']-$stepsLabel*7 ?></div>
                                     </div>
-                                    <div id="temp-val" class="thermometer__tube" style="height: <?php echo $value ?>%" data-c="0" data-f="32" title="0°C, 32°F">
+                                    <div id="temp-val" class="thermometer__tube" style="height: <?php echo $data['percent'][$counter] ?>%" data-c="0" data-f="32" title="0°C, 32°F">
                                       <div id="temp-fill" class="thermometer__mercury"></div>
                                       <div class="thermometer__ring"></div>
                                       <div class="thermometer__ring"></div>
@@ -150,11 +115,6 @@
                             <?php  } ?>
 
                             <?php if($data['sensorData'][$counter]['type'] == "gauge"){ ?>
-                                <?php $interval = $data['sensorData'][$counter]['max']- $data['sensorData'][$counter]['min']; ?>
-                                <?php $percent = $data['value'][$counter] / $interval  ?>
-                                <?php $value =( $data['value'][$counter] - $data['sensorData'][$counter]['min']) * $stepsMeter; ?>
-                                <?php echo $percent ?>
-
                                 <div class="single-chart-half">
                                     <svg viewBox="0 0 36 36" class="circular-chart-half">
                                       <path class="circle-bg-half"
@@ -163,8 +123,8 @@
                                           a 15.9155 15.9155 0 0 1 0 31.831
                                           a 15.9155 15.9155 0 0 1 0 -31.831"
                                       />
-                                      <path class="circle-half"
-                                        stroke-dasharray="0, 100"
+                                      <path class="circle-half" style="stroke: <?php echo $data['color'][$counter] ?>"
+                                        stroke-dasharray="<?php echo $data['percent'][$counter]/2 ?>, 100"
                                         d="M18 2.0845
                                           a 15.9155 15.9155 0 0 1 0 31.831
                                           a 15.9155 15.9155 0 0 1 0 -31.831"

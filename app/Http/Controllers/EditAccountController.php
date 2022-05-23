@@ -77,14 +77,16 @@ class EditAccountController extends Controller{
 
     public function EditAccount(Request $request)
     {
+        
         if (isset($_POST['AnnuleerBtn']))
         {
             $data = $this->siteConfig();
             $initials = $this->getInitials();
             return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
         }
-        else if (isset($_POST['deleteSensorButton']))
+        else if (isset($_POST['deleteAccountButton']))
         {
+            
             $id = auth()->user()->id;
             $userInfo = User::where('id', $id)->first();
             $oldpass = request()->input('oldpass');
@@ -106,14 +108,23 @@ class EditAccountController extends Controller{
            
 
         }
-        else
+        else if (isset($_POST['EditButon']))
         {
-            $validatedData = $request->validate([
-                'firstname' => ['required', 'string', 'max:255'],
-                'lastname' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255'],
-                'oldpass' => ['required', 'string', 'min:8']
+            /*$validatedData = $request->validate([
+                'firstname' => ['required',  'max:255'],
+                'lastname' => ['required',  'max:255'],
+                'email' => ['required', 'email', 'max:255'],
+                'oldpass' => ['required', 'min:8']
+            ]);*/
+            
+            $request->validate([
+                'firstName' => 'required|max:255',
+                'lastName' => 'required|max:255',
+                'email' => 'required|max:255|email',
+                'oldpass' => 'required|min:8'
             ]);
+            
+            
             $id = auth()->user()->id;
             $firstName = request()->input('firstName');
             $lastName = request()->input('lastName');
@@ -127,14 +138,16 @@ class EditAccountController extends Controller{
             $name .= " ";
             $name .= trim($lastName);
 
+            
             if(Hash:: check ($oldpass, $userInfo['password'])){
-
+                
                 if($password != ""){
                     $request->validate([
                         'password' => ['min:8'],
                         'confPassword' => ['min:8'],
                     ]);
                     if ($password == $confPassword){
+                        
                         DB::table('users')
                             ->where ('id', $id)
                             ->update(['name' => $name, 'email' => $email,'password' => Hash::make($password)]);
@@ -145,16 +158,21 @@ class EditAccountController extends Controller{
                     }
                     
                 }else{
+                    
                     DB::table('users')
                         ->where ('id', $id)
                         ->update(['name' => $name, 'email' => $email]);
                 }
+                
                 $data = $this->siteConfig();
                 $initials = $this->getInitials();
+                
+                
                 return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
 
 
             }else{
+                
                 echo "<script>alert('wachtwoord is fout!');</script>";
                 return $this->mainSiteConfig();
             }
@@ -172,8 +190,6 @@ class EditAccountController extends Controller{
             return null;
         }
 
-
-   //     return 30.1;
     }
 
     

@@ -316,7 +316,6 @@ body { background: #f2f2f2; }
 			font-weight:bold;
 			opacity:0;
 			transition:opacity 0.5s;
-      color:white;
 		}
 
 		.toggleGraph:checked + table td span,
