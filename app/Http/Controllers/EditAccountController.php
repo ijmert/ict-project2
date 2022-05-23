@@ -116,6 +116,15 @@ class EditAccountController extends Controller{
                 'email' => ['required', 'email', 'max:255'],
                 'oldpass' => ['required', 'min:8']
             ]);*/
+            
+            $request->validate([
+                'firstName' => 'required|max:255',
+                'lastName' => 'required|max:255',
+                'email' => 'required|max:255|email',
+                'oldpass' => 'required|min:8'
+            ]);
+            
+            
             $id = auth()->user()->id;
             $firstName = request()->input('firstName');
             $lastName = request()->input('lastName');
@@ -181,8 +190,6 @@ class EditAccountController extends Controller{
             return null;
         }
 
-
-   //     return 30.1;
     }
 
     
