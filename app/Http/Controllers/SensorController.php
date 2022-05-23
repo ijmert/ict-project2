@@ -45,7 +45,6 @@ class SensorController extends Controller
         return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
     }
 
-                    ////Sensor Aanpassen////
 
     public function showEditSensor(Request $request){
         if (isset($_POST['EditSensorButton']))
@@ -166,7 +165,6 @@ class SensorController extends Controller
     public function getAllTopics(){
         $topics = Sensor_last_measurement::all();
         return $topics;
-        //return view("layouts/test" , ['data'=>$topics]);
     }
     public function getColor($percent){
         if($percent <25){
@@ -197,6 +195,7 @@ class SensorController extends Controller
             $step = 100/$interval;
             $percent = ($value -$min ) * $step ;
         }
+        $percent = round($percent, 2);
         return $percent;
 
     }

@@ -34,19 +34,13 @@ class EditAccountController extends Controller{
     }
 
     public function siteConfig() {
-        $id = auth()->user()->id;
-
-
-        $SensorData = sensor::where('users_id', $id)->get();
-        $data['sensorData'] = $SensorData;
-        for($i=0; $i<count($SensorData);$i++){
-           $data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
+        $id = auth()->user()->id;   //id ophalen
+        $data['sensorData'] = sensor::where('users_id', $id)->get(); //sensors van gebruiker ophalen
+        for($i=0; $i<count($data['sensorData']);$i++){
+           $data['value'][$i] = $this->getLastValue($data['sensorData'][$i]['topic']);  //van alle sensoren de waarden ophalen
+           $data['percent'][$i] = $this->getPercent($data['value'][$i], $data['sensorData'][$i]['max'], $data['sensorData'][$i]['min']); //percentage berekenen
+           $data["color"][$i] = $this->getColor($data['percent'][$i]);  //kleur ophalen
         }
-        $name = User::where('id', $id)->get();
-        $preName = explode(' ', $name[0]['name'])[0];
-        $postName = explode(' ', $name[0]['name'])[1];
-        $data['initials'] = substr($preName, 0, 1);
-        $data['initials'] .= substr($postName, 0, 1);
         return $data;
     }
     public function getInitials(){
@@ -56,6 +50,7 @@ class EditAccountController extends Controller{
         $postName = explode(' ', $name[0]['name'])[1];
         $initials = substr($preName, 0, 1);
         $initials .= substr($postName, 0, 1);
+        $initials = strtoupper($initials);
         return $initials;
     }
 
@@ -66,15 +61,16 @@ class EditAccountController extends Controller{
         $id = auth()->user()->id;
         $userData = User::where('id', $id)->first();
         $initials = $this->getInitials();
-        //nog password decrypten
-        //$userData['password'] = $userData['password'];
         $userData['firstName'] = explode(' ', $userData['name'])[0];
         $userData['lastName'] = explode(' ', $userData['name'])[1];
+        
 
         return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
 
     }
 
+    
+    
     public function EditAccount(Request $request)
     {
         
@@ -110,18 +106,14 @@ class EditAccountController extends Controller{
         }
         else if (isset($_POST['EditButon']))
         {
-            /*$validatedData = $request->validate([
-                'firstname' => ['required',  'max:255'],
-                'lastname' => ['required',  'max:255'],
-                'email' => ['required', 'email', 'max:255'],
-                'oldpass' => ['required', 'min:8']
-            ]);*/
-            
-            $request->validate([
+           
+            $validatedData = $request->validate([
                 'firstName' => 'required|max:255',
                 'lastName' => 'required|max:255',
                 'email' => 'required|max:255|email',
-                'oldpass' => 'required|min:8'
+                'oldpass' => 'required|min:8',
+                'password' => 'min:8|nullable',
+                'confPassword' => 'min:8|nullable',
             ]);
             
             
@@ -142,10 +134,10 @@ class EditAccountController extends Controller{
             if(Hash:: check ($oldpass, $userInfo['password'])){
                 
                 if($password != ""){
-                    $request->validate([
+                    /*$request->validate([
                         'password' => ['min:8'],
                         'confPassword' => ['min:8'],
-                    ]);
+                    ]);*/
                     if ($password == $confPassword){
                         
                         DB::table('users')
@@ -192,7 +184,39 @@ class EditAccountController extends Controller{
 
     }
 
-    
+    public function getColor($percent){
+        if($percent <25){
+            $color = "red";
+        }
+        else if($percent <50){
+            $color = "orange";
+        }
+        else if($percent <75){
+            $color = "yellow";
+        }
+        else{
+            $color = "green";
+        }
+        return $color;
+    }
+    public function getPercent($value, $max , $min){
+        if($value > $max){
+            $percent = 100;
+        }
+        else if($value < $min){
+            $percent = 0;
+        }
+        else if($max == $min){
+            $percent =0;
+        }else{
+            $interval = $max- $min;
+            $step = 100 / $interval;
+            $percent = ($value -$min ) * $step ;
+        }
+         $percent = round($percent, 2);
+        return $percent;
+
+    }
     
     
 }
