@@ -50,6 +50,7 @@ class EditAccountController extends Controller{
         $postName = explode(' ', $name[0]['name'])[1];
         $initials = substr($preName, 0, 1);
         $initials .= substr($postName, 0, 1);
+        $initials = strtoupper($initials);
         return $initials;
     }
 
@@ -62,8 +63,6 @@ class EditAccountController extends Controller{
         $initials = $this->getInitials();
         //nog password decrypten
         //$userData['password'] = $userData['password'];
-        $userData['firstName'] = explode(' ', $userData['name'])[0];
-        $userData['lastName'] = explode(' ', $userData['name'])[1];
 
         return view("layouts/editAccount", ['userData' => $userData], ['initials'=>$initials]);
 
@@ -220,6 +219,7 @@ class EditAccountController extends Controller{
             $step = 100 / $interval;
             $percent = ($value -$min ) * $step ;
         }
+         $percent = round($percent, 2);
         return $percent;
 
     }

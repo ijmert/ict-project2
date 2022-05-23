@@ -45,7 +45,6 @@ class SensorController extends Controller
         return view("layouts/mainTableView" , ['data'=>$data], ['initials'=>$initials] );
     }
 
-                    ////Sensor Aanpassen////
 
     public function showEditSensor(Request $request){
         if (isset($_POST['EditSensorButton']))
@@ -119,7 +118,7 @@ class SensorController extends Controller
 
         $validatedData = $request->validate
         ([
-            'topic' => 'required|exists:sensor_last_measurements',
+            'topic' => 'required|exists:sensor_last_measurements|unique:sensors',
             'max' => 'required|integer',
             'min' => 'required|integer',
             'unit' => 'required',
@@ -197,6 +196,7 @@ class SensorController extends Controller
             $step = 100 / $interval;
             $percent = ($value -$min ) * $step ;
         }
+        $percent = round($percent, 2);
         return $percent;
 
     }
