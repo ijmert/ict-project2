@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script type="module" src="js/MQTTwebsocket.js"></script>
 <div class="container-fluid" style="margin: 55px">
     <div class="row">
         <div class="col">
@@ -13,7 +15,7 @@
     <div class="row">
 
         <?php for($counter = 0; $counter < count($data['sensorData']); $counter++){ ?>
-            <div class="<?php echo $data['sensorData'][$counter]['topic']?> col-sm-6 col-md-4 col-lg-3">
+            <div data-topic=<?php echo $data['sensorData'][$counter]['topic']?> class="identifier <?php echo $data['sensorData'][$counter]['topic']?> col-sm-6 col-md-4 col-lg-3">
 
                 <table>
                     <tr>
@@ -44,22 +46,22 @@
                                       </div>
                             <?php  } ?>
                             <?php if($data['sensorData'][$counter]['type'] == "chart"){ ?>
-                                <table class="graph">
+                                <table data-unit="<?php echo $data['sensorData'][$counter]['unit']?>" data-max="<?php echo $data['sensorData'][$counter]['max']?>" data-min="<?php echo $data['sensorData'][$counter]['min']?>" class="graph">
                                     <thead>
                                             <tr>
                                                     <th scope="col"></th>
                                                     <th scope="col"></th>
                                             </tr>
                                     </thead><tbody>
-                                            <tr style="height:<?php echo $data['percent'][$counter] ?>%; background:<?php echo $data['color'][$counter] ?>; border-radius:0.5em 0.5em 0 0;">
-                                                    <td><span> <?php echo $data['percent'][$counter] ?><?php echo $data['sensorData'][$counter]['unit'] ?></span></td>
+                                            <tr class="chart-data-holder" style="height:<?php echo $data['percent'][$counter] ?>%; background:<?php echo $data['color'][$counter] ?>; border-radius:0.5em 0.5em 0 0;">
+                                                    <td><span> <?php echo $data['value'][$counter] ?><?php echo $data['sensorData'][$counter]['unit'] ?></span></td>
                                             </tr>
                                     </tbody>
                                 </table>
                             <?php  } ?>
 
                             <?php if($data['sensorData'][$counter]['type'] == "circle chart"){ ?>
-                                <div class="single-chart">
+                                <div data-unit="<?php echo $data['sensorData'][$counter]['unit']?>" data-max="<?php echo $data['sensorData'][$counter]['max']?>" data-min="<?php echo $data['sensorData'][$counter]['min']?>" class="single-chart">
                                     <svg viewBox="0 0 36 36" class="circular-chart">
                                       <path class="circle-bg"
                                         d="M18 2.0845
@@ -80,7 +82,7 @@
                             <?php if($data['sensorData'][$counter]['type'] == "thermometer"){ ?>
                               <?php $interval = $data['sensorData'][$counter]['max']- $data['sensorData'][$counter]['min']; ?>
                               <?php $stepsLabel = $interval/8; ?>
-                              <div class="thermometerBody">
+                              <div data-max="<?php echo $data['sensorData'][$counter]['max']?>" data-min="<?php echo $data['sensorData'][$counter]['min']?>" class="thermometerBody">
                                 <div class="thermometer">
                                   <div class="thermometer__inner">
                                     <div class="thermometer__title"><?php echo $data['sensorData'][$counter]['unit'] ?> </div>
@@ -115,7 +117,7 @@
                             <?php  } ?>
 
                             <?php if($data['sensorData'][$counter]['type'] == "gauge"){ ?>
-                                <div class="single-chart-half">
+                                <div class="single-chart-half" data-max="<?php echo $data['sensorData'][$counter]['max']?>" data-min="<?php echo $data['sensorData'][$counter]['min']?>"  >
                                     <svg viewBox="0 0 36 36" class="circular-chart-half">
                                       <path class="circle-bg-half"
                                       stroke-dasharray="50, 100"
