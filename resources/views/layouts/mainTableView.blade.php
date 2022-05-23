@@ -13,7 +13,7 @@
     <div class="row">
 
         <?php for($counter = 0; $counter < count($data['sensorData']); $counter++){ ?>
-            <div class="<?php echo $data['sensorData'][$counter]['topic']?>" class="col-sm-6 col-md-4 col-lg-3">
+            <div class="<?php echo $data['sensorData'][$counter]['topic']?> col-sm-6 col-md-4 col-lg-3">
 
                 <table>
                     <tr>
