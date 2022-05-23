@@ -119,7 +119,7 @@ class SensorController extends Controller
 
         $validatedData = $request->validate
         ([
-            'topic' => 'required|exists:sensor_last_measurements|unique:sensors',
+            'topic' => 'required|exists:sensor_last_measurements',
             'max' => 'required|integer',
             'min' => 'required|integer',
             'unit' => 'required',

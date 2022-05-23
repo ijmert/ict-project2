@@ -34,19 +34,13 @@ class EditAccountController extends Controller{
     }
 
     public function siteConfig() {
-        $id = auth()->user()->id;
-
-
-        $SensorData = sensor::where('users_id', $id)->get();
-        $data['sensorData'] = $SensorData;
-        for($i=0; $i<count($SensorData);$i++){
-           $data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
+        $id = auth()->user()->id;   //id ophalen
+        $data['sensorData'] = sensor::where('users_id', $id)->get(); //sensors van gebruiker ophalen
+        for($i=0; $i<count($data['sensorData']);$i++){
+           $data['value'][$i] = $this->getLastValue($data['sensorData'][$i]['topic']);  //van alle sensoren de waarden ophalen
+           $data['percent'][$i] = $this->getPercent($data['value'][$i], $data['sensorData'][$i]['max'], $data['sensorData'][$i]['min']); //percentage berekenen
+           $data["color"][$i] = $this->getColor($data['percent'][$i]);  //kleur ophalen
         }
-        $name = User::where('id', $id)->get();
-        $preName = explode(' ', $name[0]['name'])[0];
-        $postName = explode(' ', $name[0]['name'])[1];
-        $data['initials'] = substr($preName, 0, 1);
-        $data['initials'] .= substr($postName, 0, 1);
         return $data;
     }
     public function getInitials(){
@@ -176,7 +170,38 @@ class EditAccountController extends Controller{
    //     return 30.1;
     }
 
-    
+    public function getColor($percent){
+        if($percent <25){
+            $color = "red";
+        }
+        else if($percent <50){
+            $color = "orange";
+        }
+        else if($percent <75){
+            $color = "yellow";
+        }
+        else{
+            $color = "green";
+        }
+        return $color;
+    }
+    public function getPercent($value, $max , $min){
+        if($value > $max){
+            $percent = 100;
+        }
+        else if($value < $min){
+            $percent = 0;
+        }
+        else if($max == $min){
+            $percent =0;
+        }else{
+            $interval = $max- $min;
+            $step = 100 / $interval;
+            $percent = ($value -$min ) * $step ;
+        }
+        return $percent;
+
+    }
     
     
 }
