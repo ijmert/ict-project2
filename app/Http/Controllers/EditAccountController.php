@@ -75,6 +75,15 @@ class EditAccountController extends Controller{
 
     }
 
+    public function messages()
+{
+    return [
+        'firstName.required' => 'A title is required',
+        'lastName.required' => 'A message is required',
+    ];
+}
+    
+    
     public function EditAccount(Request $request)
     {
         
@@ -110,18 +119,14 @@ class EditAccountController extends Controller{
         }
         else if (isset($_POST['EditButon']))
         {
-            /*$validatedData = $request->validate([
-                'firstname' => ['required',  'max:255'],
-                'lastname' => ['required',  'max:255'],
-                'email' => ['required', 'email', 'max:255'],
-                'oldpass' => ['required', 'min:8']
-            ]);*/
-            
-            $request->validate([
+           
+            $validatedData = $request->validate([
                 'firstName' => 'required|max:255',
                 'lastName' => 'required|max:255',
                 'email' => 'required|max:255|email',
-                'oldpass' => 'required|min:8'
+                'oldpass' => 'required|min:8',
+                'password' => 'min:8|nullable',
+                'confPassword' => 'min:8|nullable',
             ]);
             
             
@@ -142,10 +147,10 @@ class EditAccountController extends Controller{
             if(Hash:: check ($oldpass, $userInfo['password'])){
                 
                 if($password != ""){
-                    $request->validate([
+                    /*$request->validate([
                         'password' => ['min:8'],
                         'confPassword' => ['min:8'],
-                    ]);
+                    ]);*/
                     if ($password == $confPassword){
                         
                         DB::table('users')
