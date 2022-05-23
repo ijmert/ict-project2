@@ -19,16 +19,13 @@ class SensorController extends Controller
     }
 
     public function siteConfig() {
-        $id = auth()->user()->id;
-        $SensorData = sensor::where('users_id', $id)->get();
-        $data['sensorData'] = $SensorData;
-        for($i=0; $i<count($SensorData);$i++){
-           //$data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
-           $data['value'][$i] = $this->getLastValue($SensorData[$i]['topic']);
+        $id = auth()->user()->id;   //id ophalen
+        $data['sensorData'] = sensor::where('users_id', $id)->get(); //sensors van gebruiker ophalen
+        for($i=0; $i<count($data['sensorData']);$i++){
+           $data['value'][$i] = $this->getLastValue($data['sensorData'][$i]['topic']);  //van alle sensoren de waarden ophalen
+           $data['percent'][$i] = $this->getPercent($data['value'][$i], $data['sensorData'][$i]['max'], $data['sensorData'][$i]['min']); //percentage berekenen
+           $data["color"][$i] = $this->getColor($data['percent'][$i]);  //kleur ophalen
         }
-        // $data['value'] = 10;
-
-        //$data['sensor'] = $SensorData;
         return $data;
     }
     public function getInitials(){
@@ -38,6 +35,7 @@ class SensorController extends Controller
         $postName = explode(' ', $name[0]['name'])[1];
         $initials = substr($preName, 0, 1);
         $initials .= substr($postName, 0, 1);
+        $initials = strtoupper($initials);
         return $initials;
     }
 
@@ -170,9 +168,36 @@ class SensorController extends Controller
         return $topics;
         //return view("layouts/test" , ['data'=>$topics]);
     }
-
-    public function test(){
-        return view("layouts.test");
+    public function getColor($percent){
+        if($percent <25){
+            $color = "red";
+        }
+        else if($percent <50){
+            $color = "orange";
+        }
+        else if($percent <75){
+            $color = "yellow";
+        }
+        else{
+            $color = "green";
+        }
+        return $color;
     }
+    public function getPercent($value, $max , $min){
+        if($value > $max){
+            $percent = 100;
+        }
+        else if($value < $min){
+            $percent = 0;
+        }
+        else if($max == $min){
+            $percent =0;
+        }else{
+            $interval = $max- $min;
+            $step = 100 / $interval;
+            $percent = ($value -$min ) * $step ;
+        }
+        return $percent;
 
+    }
 }
