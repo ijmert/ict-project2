@@ -13,7 +13,7 @@
     <div class="row">
 
         <?php for($counter = 0; $counter < count($data['sensorData']); $counter++){ ?>
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="<?php echo $data['sensorData'][$counter]['topic']?>" class="col-sm-6 col-md-4 col-lg-3">
 
                 <table>
                     <tr>
@@ -34,8 +34,8 @@
                                               <div class="dene">
                                                 <div class="denem">
                                                   <div class="deneme">
-                                                  <strong> <?php echo $data['sensorData'][$counter]['unit'] ?></strong>
-                                                    <?php echo $data['value'][$counter] ?>
+                                                  <strong class="digital-unit"> <?php echo $data['sensorData'][$counter]['unit'] ?></strong>
+                                                    <div class="digital-value"><?php echo $data['value'][$counter] ?>
                                                   </div>
                                                 </div>
                                               </div>
@@ -75,7 +75,7 @@
                                                     <td><span><?php echo $data['value'][$counter] ?><?php echo $data['sensorData'][$counter]['unit'] ?></span></td>
                                             </tr>
                                     </tbody>
-                                    </table>
+                                </table>
                             <?php  } ?>
 
                             <?php if($data['sensorData'][$counter]['type'] == "circle chart"){ ?>
