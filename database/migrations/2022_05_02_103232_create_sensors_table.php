@@ -9,13 +9,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sensors', function (Blueprint $table) {
-            $table->id();
-            $table->string('topic')->unique();
+            $table->id()-> unique();
+            $table->string('topic');
             $table->string('type')->nullable();
             $table->string('unit');
             $table->double('min');
             $table->double('max');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('users_id')->constrained();
         });
     }
 

@@ -20,17 +20,18 @@ class userTableSeeder extends Seeder
     public function run()
      {
      DB::table('users')->insert([
-     'name' => 'pratik',
+     'name' => 'pratik gurung',
+         
      'email' => 'pratikgurung46@gmail.com',
      'password' => Hash::make('gurung123')
      ]);
      DB::table('users')->insert([
-     'name' => 'ijmert',
+     'name' => 'ijmert ulens',
      'email' => 'ijmertulens46@gmail.com',
      'password' => Hash::make('ulens123')
      ]);
      DB::table('users')->insert([
-     'name' => 'robbe',
+     'name' => 'robbe verhoeven',
      'email' => 'probbeverhoeven46@gmail.com',
      'password' => Hash::make('verhoeven123')
      ]);

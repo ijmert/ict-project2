@@ -1,21 +1,25 @@
 @extends('layouts.main')
 
 @section('content')
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<label class="labelTest">Edit sensor</label>
-<div class="containerTable">
-<form action="{{ url('editSensor') }}" method="POST" class="SensorFrom">
-{{ csrf_field() }}
 
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<label class="labelTest">Add sensor</label>
+<div class="containerTable">
+<form action="{{ url('addSensor') }}" method="post" class="SensorForm" action="/action_page.php">
+{{ csrf_field() }}
     <table>
         <tr>
             <td>Topic</td>
             <td><select class="SelectBox" name="topic" >
                 <option class="optionGroup" selected disabled>Choose topic</option>
                 <?php foreach ($topics as $topic) { ?>
-                  <option <?php if ($sensorData['topic'] == $topic['topic']){ ?> selected <?php } ?>> <?php echo $topic['topic']; ?> </option>
+                  <option > <?php echo $topic['topic']; ?> </option>
                 <?php } ?>
-            </select>         </td>
+            </select></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -26,7 +30,7 @@
         </tr>
         <tr>
             <td>Max</td>
-            <td><input class="InputBox" type="text" name="max" value="{{$sensorData['max'] }}"></td>
+            <td><input class="InputBox" type="text" name="max"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -37,7 +41,7 @@
         </tr>
         <tr>
             <td>Min</td>
-            <td><input class="InputBox" type="text" name="min" value="{{$sensorData['min'] }}"></td>
+            <td><input class="InputBox" type="text" name="min"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -48,7 +52,7 @@
         </tr>
         <tr>
             <td>Unit</td>
-            <td><input class="InputBox" type="text" name="unit" value="{{$sensorData['unit'] }}"></td>
+            <td><input class="InputBox" type="text" name="unit"></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">
@@ -60,20 +64,22 @@
         <tr>
             <td>Type</td>
             <td> <select class="SelectBox" name="type">
-                <option <?php if ($sensorData['type'] == 'chart'){ ?> selected <?php } ?> >chart</option>
-                <option <?php if ($sensorData['type'] == 'digital'){ ?> selected <?php } ?> >digital</option>
-                <option <?php if ($sensorData['type'] == 'circle chart'){ ?> selected <?php } ?> >circle chart</option>
-                <option <?php if ($sensorData['type'] == 'thermometer'){ ?> selected <?php } ?> >thermometer</option>
-                <option <?php if ($sensorData['type'] == 'gauge'){ ?> selected <?php } ?> >gauge</option>
-            </select> </td>
+                <option class="optionGroup" selected disabled>Choose chart</option>
+                <option>chart</option>
+                <option>digital</option>
+                <option>circle chart</option>
+                <option>thermometer</option>
+                <option>gauge</option>
+                </select>
+            </td>
         </tr>
     </table>
-    <button class="Knop" name="AnnuleerBtn" type="submit" value="">Cancel</button>
-    <button class="Knop" name="EditButon" type="submit"  value="<?php echo $sensorData['id'] ?>">Save</button>
+    <button class="Knop" name="AnnuleerButton" type="submit" value="">Cancel</button>
+    <button class="Knop" name="AddButton" type="submit">Add</button>
 </form>
 </div>
-
 @endsection
+
 @section('initials')
-<?php echo $sensorData['initials'] ; ?>
+<?php echo $initials ?>
 @endsection
