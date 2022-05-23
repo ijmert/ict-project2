@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container-fluid" style="margin: 55px">
+<div class="container-fluid" style="margin: 55px; width: auto">
     <div class="row">
         <div class="col">
             <form action="showAddSensor" method="post" >
