@@ -1,4 +1,4 @@
-
+mqtt = require("mqtt")
 console.log(mqtt);
 const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
 
@@ -55,47 +55,16 @@ client.on('connect', () => {
         console.log(topics);
   })
 
-  //MAX ONE TYPE OF CHART FOR EACH TOPIC
+  
   client.on('message', (topic, message, packet) => {
-    console.log(message[0])
-    var elems = document.getElementsByClassName(topic);
-    console.log(elems);
-    var gauges = [];
-    for (var i = 0; i<elems.length; i++)
-    {
-      gauges.push(elems[i].getElementsByClassName("container")[0]);
-      gauges.push(elems[i].getElementsByClassName("graph")[0]);
-      gauges.push(elems[i].getElementsByClassName("single-chart")[0]);
-      gauges.push(elems[i].getElementsByClassName("thermometerBody")[0]);
-      gauges.push(elems[i].getElementsByClassName("single-chart-half")[0]);
-      console.log(gauges);
-      for (var i = 0; i<gauges.length; i++)
-      {
-        if (typeof(gauges[i]) != "undefined")
-        {
-          switch(i)
-          {
-            case 0:
-              handleDigital(gauges[i], message[0]);
-              break;
-            case 1:
-              handleBarChart(gauges[i], message[0]);
-              break;
-            case 2:
-              handleCircleChart(gauges[i], message[0]);
-              break;
-            case 3:
-              handleThermometerChart(gauges[i], message[0]);
-              break;
-            case 4:
-              handleGauge(gauges[i], message[0]);
-
-          }
-        }
-      }
-    }
-    // elem[0].getElementsByClassName("percentage")[0].innerHTML = message;
-    // console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
+    console.log(topic, message, packet)
+    var elems = document.getElementsByClassName("topic");
+    elems.forEach(gauge => {
+        digital = gauge.getElementsByClassName("container");
+        
+    });
+    elem[0].getElementsByClassName("percentage")[0].innerHTML = message;
+    console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
   })
 
   function handleDigital(elem, value)
@@ -105,6 +74,7 @@ client.on('connect', () => {
 
   function handleCircleChart(elem, value)
   {
+      console.log("in function")
     var attributes = elem.attributes
     var max = attributes.getNamedItem("data-max").value;
     var min = attributes.getNamedItem("data-min").value;
@@ -184,3 +154,29 @@ client.on('connect', () => {
 
   
   
+
+//   div class = topic
+// 	class "container" (digital?)   -> class "digital-unit"
+// 				       -> class "digital-value"
+	
+// 	OR class "single-chart" (circle chart)          -> class "single-chart"
+// 							-> <path class="circle" style="stroke: $color" stroke-dasharray="$percent">
+// 							COLOR: RED -> ORANGE -> YELLOW -> GREEN equidistant
+// 							-> class="percentage" INNER HTML $percentage? met unit
+// 							(ik denk dat dit gewoon absolute waarde is, nie percentage)
+ 	
+// 	OR class "graph" 				-> <tr class "bar" style="height:$percent; background:$color>
+// 							COLOR: RED -> ORANGE -> YELLOW -> GREEN equidistant
+// 								<span> $value $unit </span>
+	
+	
+// 	OR class "thermometerBody"			-> <div class="thermometer_tube" style = "height: $value %">
+// 								VALUE IS PERCENTAGE VAN MIN TOT MAX
+// 								MIN MAX VERKRIJGEN VAN STEPS?
+// 							thermometerlabel[0].innerhtml-thermometerlabel[1].innerhtml=step
+// 							thermometerlabel[0]+0.5$stepslabel = max?
+// 							thermometerlabel[7]-0.5$stepslabel = min?
+// 							thermometerlabel is de class
+	
+// 	OR class "single-chart-half" (gauge)		-> <path class "circle-half" style="stroke: $color" stroke-dasharray="$percentage/2, 100"
+// 								<text class="value"> $value </text>
