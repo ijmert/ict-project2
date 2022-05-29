@@ -17,75 +17,75 @@ class sensorsTableSeeder extends Seeder
     public function run()
     {
         DB::table('sensors')->insert([
-     'topic' => 'sensor2',
-     'type' => 'chart',
-     'unit' => 'bpm',
-     'min' => '100',
-     'max' => '300',
-     'users_id' =>'1',
-     ]);
-     DB::table('sensors')->insert([
-     'topic' => 'corona',
-     'type' => 'chart',
-     'unit' => 'degree',
+     'topic' => 'living/temperatuur',
+     'type' => 'digital',
+     'unit' => '°C',
      'min' => '0',
-     'max' => '12',
+     'max' => '40',
      'users_id' =>'1',
      ]);
      DB::table('sensors')->insert([
-     'topic' => 'maarten',
+     'topic' => 'klaslokaal1/co2',
+     'type' => 'circle chart',
+     'unit' => 'ppm',
+     'min' => '200',
+     'max' => '4000',
+     'users_id' =>'1',
+     ]);
+     DB::table('sensors')->insert([
+     'topic' => 'living/luchtvochtigheid',
      'type' => 'chart',
-     'unit' => 'km',
-     'min' => '10',
+     'unit' => '%',
+     'min' => '0',
      'max' => '100',
      'users_id' =>'3',
      ]);
           DB::table('sensors')->insert([
-     'topic' => 'co3',
+     'topic' => 'buiten/ozon',
      'type' => 'circle chart',
-     'unit' => 'degree',
+     'unit' => 'ppm',
      'min' => '0',
-     'max' => '37',
+     'max' => '0.2',
      'users_id' =>'2',
      ]);
                DB::table('sensors')->insert([
-     'topic' => 'co2',
-     'type' => 'digital',
-     'unit' => '°',
+     'topic' => 'living/co2',
+     'type' => 'circle chart',
+     'unit' => 'ppm',
      'min' => '0',
-     'max' => '12',
+     'max' => '3500',
      'users_id' =>'1',
      ]);
                     DB::table('sensors')->insert([
-     'topic' => 'opapa',
-     'type' => 'digital',
-     'unit' => 'degree',
+     'topic' => 'buiten/luchtvochtigheid',
+     'type' => 'chart',
+     'unit' => '%',
      'min' => '0',
-     'max' => '30',
+     'max' => '100',
      'users_id' =>'3',
      ]);
      DB::table('sensors')->insert([
-     'topic' => 'sensor out',
+     'topic' => 'garage/temperatuur',
      'type' => 'thermometer',
-     'unit' => 'degree',
-     'min' => '0',
-     'max' => '10',
+     'unit' => '°C',
+     'min' => '-15',
+     'max' => '40',
      'users_id' =>'3',
      ]);
      DB::table('sensors')->insert([
-     'topic' => 'iets',
-     'type' => 'thermometer',
-     'unit' => 'km',
+     'topic' => 'buiten/fijnstof',
+     'type' => 'gauge',
+     'unit' => 'µg/m3',
      'min' => '0',
-     'max' => '15',
+     'max' => '100',
      'users_id' =>'2',
      ]);
      DB::table('sensors')->insert([
-     'topic' => 'maarten3',
-     'type' => 'circle chart',
-     'unit' => 'degree',
+     'topic' => 'slaapkamer/temperatuur',
+     'type' => 'thermometer',
+     'unit' => '°C',
      'min' => '0',
-     'max' => '30',
+     'max' => '45',
      'users_id' =>'2',
      ]);
     }

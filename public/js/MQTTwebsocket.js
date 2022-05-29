@@ -57,8 +57,10 @@ client.on('connect', () => {
 
   //MAX ONE TYPE OF CHART FOR EACH TOPIC
   client.on('message', (topic, message, packet) => {
+    console.log(message.toString());
     message=parseFloat(message);    
     console.log(message);
+    message = Math.round(message * 100) / 100
     var elems = document.getElementsByClassName(topic);
     console.log(elems);
     var gauges = [];
@@ -108,14 +110,14 @@ client.on('connect', () => {
   {
     var attributes = elem.attributes
     var max = attributes.getNamedItem("data-max").value;
-    if (value > max){value = max}
     var min = attributes.getNamedItem("data-min").value;
     var unit = attributes.getNamedItem("data-unit").value;
-    var percentage = ((value-min)/(max-min))*100
+    var percentage
+    value > max ? percentage = 100 : percentage=((value-min)/(max-min))*100
     var color = GetColorByPercentage(percentage);
     var circle = elem.getElementsByClassName("circle")[0]
     circle.style.stroke = color;
-    circle.setAttribute("stroke-dasharray", percentage/2 + ", 100"); //waarom gedeelt door 2?
+    circle.setAttribute("stroke-dasharray", percentage + ", 100");
     elem.getElementsByClassName("percentage")[0].innerHTML = value + " " + unit;
   }
 
@@ -123,10 +125,10 @@ client.on('connect', () => {
   {
     var attributes = elem.attributes;
     var max= attributes.getNamedItem("data-max").value;
-    if (value > max){value = max}
     var min= attributes.getNamedItem("data-min").value;
     var unit = attributes.getNamedItem("data-unit").value;
-    var percentage = ((value-min)/(max-min))*100
+    var percentage
+    value > max ? percentage = 100 : percentage=((value-min)/(max-min))*100
     var color = GetColorByPercentage(percentage);
     var chart = elem.getElementsByClassName("chart-data-holder")[0]
     chart.style.height = percentage+"%";
@@ -138,9 +140,9 @@ client.on('connect', () => {
   {
     var attributes = elem.attributes;
     var max= attributes.getNamedItem("data-max").value;
-    if (value > max){value = max}
     var min= attributes.getNamedItem("data-min").value;
-    var percentage = ((value-min)/(max-min))*100;
+    var percentage
+    value > max ? percentage = 100 : percentage=((value-min)/(max-min))*100
     elem.getElementsByClassName("thermometer__tube")[0].style.height=percentage + "%";
   }
 
@@ -149,13 +151,14 @@ client.on('connect', () => {
       var attributes = elem.attributes;
       console.log(attributes);
       var max= attributes.getNamedItem("data-max").value;
-      if (value > max){value = max}
       var min= attributes.getNamedItem("data-min").value;
-      var percentage = ((value-min)/(max-min))*100;
+      var percentage
+      value > max ? percentage = 100 : percentage=((value-min)/(max-min))*100
+      console.log(percentage);
       var color = GetColorByPercentage(percentage);
       var halfcircle = elem.getElementsByClassName("circle-half")[0];
       halfcircle.style.stroke=color;
-      halfcircle.setAttribute("stroke-dasharray", percentage/2 + ", 100"); //waarom gedeelt door 2?
+      halfcircle.setAttribute("stroke-dasharray", percentage/2 + ", 100");
       elem.getElementsByClassName("value")[0].innerHTML = value;
   }
 
