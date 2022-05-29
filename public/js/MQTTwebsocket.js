@@ -57,7 +57,8 @@ client.on('connect', () => {
 
   //MAX ONE TYPE OF CHART FOR EACH TOPIC
   client.on('message', (topic, message, packet) => {
-    console.log(message[0])
+    message=parseFloat(message);    
+    console.log(message);
     var elems = document.getElementsByClassName(topic);
     console.log(elems);
     var gauges = [];
@@ -76,19 +77,19 @@ client.on('connect', () => {
           switch(i)
           {
             case 0:
-              handleDigital(gauges[i], message[0]);
+              handleDigital(gauges[i], message);
               break;
             case 1:
-              handleBarChart(gauges[i], message[0]);
+              handleBarChart(gauges[i], message);
               break;
             case 2:
-              handleCircleChart(gauges[i], message[0]);
+              handleCircleChart(gauges[i], message);
               break;
             case 3:
-              handleThermometerChart(gauges[i], message[0]);
+              handleThermometerChart(gauges[i], message);
               break;
             case 4:
-              handleGauge(gauges[i], message[0]);
+              handleGauge(gauges[i], message);
 
           }
         }
@@ -107,6 +108,7 @@ client.on('connect', () => {
   {
     var attributes = elem.attributes
     var max = attributes.getNamedItem("data-max").value;
+    if (value > max){value = max}
     var min = attributes.getNamedItem("data-min").value;
     var unit = attributes.getNamedItem("data-unit").value;
     var percentage = ((value-min)/(max-min))*100
@@ -121,6 +123,7 @@ client.on('connect', () => {
   {
     var attributes = elem.attributes;
     var max= attributes.getNamedItem("data-max").value;
+    if (value > max){value = max}
     var min= attributes.getNamedItem("data-min").value;
     var unit = attributes.getNamedItem("data-unit").value;
     var percentage = ((value-min)/(max-min))*100
@@ -135,6 +138,7 @@ client.on('connect', () => {
   {
     var attributes = elem.attributes;
     var max= attributes.getNamedItem("data-max").value;
+    if (value > max){value = max}
     var min= attributes.getNamedItem("data-min").value;
     var percentage = ((value-min)/(max-min))*100;
     elem.getElementsByClassName("thermometer__tube")[0].style.height=percentage + "%";
@@ -145,6 +149,7 @@ client.on('connect', () => {
       var attributes = elem.attributes;
       console.log(attributes);
       var max= attributes.getNamedItem("data-max").value;
+      if (value > max){value = max}
       var min= attributes.getNamedItem("data-min").value;
       var percentage = ((value-min)/(max-min))*100;
       var color = GetColorByPercentage(percentage);
