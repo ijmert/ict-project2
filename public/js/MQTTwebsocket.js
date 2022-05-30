@@ -57,11 +57,10 @@ client.on('connect', () => {
 
   //MAX ONE TYPE OF CHART FOR EACH TOPIC
   client.on('message', (topic, message, packet) => {
-    console.log(message.toString());
-    message=parseFloat(message);    
-    console.log(message);
+    console.log(message.toString()) //debug
+    message=parseFloat(message)    
     message = Math.round(message * 100) / 100
-    var elems = document.getElementsByClassName(topic);
+    var elems = document.getElementsByClassName(topic)
     console.log(elems);
     var gauges = [];
     for (var i = 0; i<elems.length; i++)
