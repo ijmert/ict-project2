@@ -50,7 +50,6 @@ class SensorController extends Controller
         if (isset($_POST['EditSensorButton']))
         {
             $id= $request->input('EditSensorButton');
-            //data opzoeken van deze ID
             $sensorData = sensor::where('id', $id)->first();
             $sensorData['initials'] = $this->getInitials();
             $topics = $this->getAllTopics();
