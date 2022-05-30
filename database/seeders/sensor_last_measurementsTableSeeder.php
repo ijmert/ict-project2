@@ -17,60 +17,60 @@ class sensor_last_measurementsTableSeeder extends Seeder
     public function run()
     {
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '150',
-     'topic' => 'sensor2',
+     'LastMeasurement' => '23',
+     'topic' => 'living/temperatuur',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '9',
-     'topic' => 'sensor out',
+     'LastMeasurement' => '10',
+     'topic' => 'garage/temperatuur',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '150',
-     'topic' => 'maarten3',
-     'created_at' => NULL,
-     'updated_at' => NULL,
-     ]);
-     
-     DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '35',
-     'topic' => 'maarten',
+     'LastMeasurement' => '19',
+     'topic' => 'slaapkamer/temperatuur',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '5',
-     'topic' => 'iets',
+     'LastMeasurement' => '50',
+     'topic' => 'living/luchtvochtigheid',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '4',
-     'topic' => 'opapa',
+     'LastMeasurement' => '12',
+     'topic' => 'buiten/fijnstof',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '9',
-     'topic' => 'corona',
+     'LastMeasurement' => '60',
+     'topic' => 'buiten/luchtvochtigheid',
+     'created_at' => NULL,
+     'updated_at' => NULL,
+     ]);
+     
+     DB::table('sensor_last_measurements')->insert([
+     'LastMeasurement' => '400',
+     'topic' => 'klaslokaal1/co2',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '5',
-     'topic' => 'co3',
+     'LastMeasurement' => '0.075',
+     'topic' => 'buiten/ozon',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);
      DB::table('sensor_last_measurements')->insert([
-     'LastMeasurement' => '5',
-     'topic' => 'co2',
+     'LastMeasurement' => '400',
+     'topic' => 'living/co2',
      'created_at' => NULL,
      'updated_at' => NULL,
      ]);

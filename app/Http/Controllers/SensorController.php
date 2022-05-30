@@ -191,7 +191,7 @@ class SensorController extends Controller
             $percent =0;
         }else{
             $interval = $max- $min;
-            $step = 100 / $interval;
+            $step = 100/$interval;
             $percent = ($value -$min ) * $step ;
         }
         $percent = round($percent, 2);
