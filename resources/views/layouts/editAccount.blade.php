@@ -11,7 +11,7 @@
 
     <table>
         <tr>
-            <td>Firstname</td>
+            <td>First Name</td>
             <td><input class="InputBox" type="text" name="firstName" value=" {{$userData['firstName'] }} " >         </td>
         </tr>
         <tr>
@@ -21,7 +21,7 @@
                 @endif
             </td>
         </tr>
-        <td>Lastname</td>
+        <td>Last Name</td>
             <td><input class="InputBox" type="text" name="lastName" value=" {{$userData['lastName'] }} " >         </td>
         </tr>
         <tr>
@@ -43,7 +43,7 @@
             </td>
         </tr>
         <tr>
-            <td>old password</td>
+            <td>Old Password</td>
             <td><input class="InputBox" type="password" name="oldpass""></td>
 
         </tr>
@@ -56,7 +56,7 @@
         </tr>
 
         <tr>
-            <td>new password</td>
+            <td>New Password</td>
             <td><input class="InputBox" type="password" name="password" ></td>
         </tr>
         <tr>
@@ -67,7 +67,7 @@
             </td>
         </tr>
         <tr>
-            <td>confirm new password</td>
+            <td>Confirm New Password</td>
             <td><input class="InputBox" type="password" name="confPassword" ></td>
         </tr>
         <tr>
@@ -80,7 +80,7 @@
 
     </table>
     <button class="Knop" name="AnnuleerBtn" type="submit" value="">Cancel</button>
-    <button class="Knop" name="EditButon" type="submit">Save edit </button>
+    <button class="Knop" name="EditButon" type="submit">Save</button>
     <button class="Knop" name="deleteAccountButton" type="submit">Delete account</button>
 </form>
 </div>
