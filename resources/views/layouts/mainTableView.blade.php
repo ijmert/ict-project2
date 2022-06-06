@@ -3,7 +3,7 @@
 @section('content')
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script type="module" src="js/MQTTwebsocket.js"></script>
-<div class="container-fluid" style="margin: 55px">
+<div class="container-fluid" style="margin: 55px, width: 0px">
     <div class="row">
         <div class="col">
             <form action="showAddSensor" method="post" >
